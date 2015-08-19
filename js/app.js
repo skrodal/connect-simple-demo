@@ -11,10 +11,16 @@
 	$( document ).ready(function() {
 		//  ...HVIS vi har en Connect token
 		if(CONNECT_AUTH.token()){
+			// Vis modal med velkomstinfo. Kommenter ut om den blir for irriterende.
+			showWelcomeMessage();
 			// Oppdater grensesnitt med info vi har for hånden
 			updateUI();
 		}
 	});
+	
+	function showWelcomeMessage(){
+		$('#modal-welcome').modal();
+	}
 	
 	/**
 	 * Når bruker er autentisert kan vi oppdatere UIet littegrann.
@@ -39,7 +45,7 @@
 	// Klikk på denne knappen åpner velkomstdialog og starter serien med vinduer 
 	// som henter data fra ulike endepunkt/APIer:
 	$('body').on('click', '.btnCallTokenInfo', function() {
-		showWelcomeMessage();
+		showTutorialWelcomeMessage();
 	});
 	
 	// Flyten er som følger:
@@ -51,7 +57,7 @@
 	
 	// ---------------------- 1. TOKEN -----------------------------------------------------------------
 	
-	function showWelcomeMessage(){
+	function showTutorialWelcomeMessage(){
 		var token = JSON.stringify(CONNECT_AUTH.token(), undefined, 2);
 		// UTILS ligger nederst i denne fila
 		UTILS.alert(
@@ -158,7 +164,7 @@
 				'f.eks. hvor du hører til, om du er ansatt eller student, osv. Hvilke muligheter for bruk i f.eks. tilgangsstyring!</p>' +
 				'<pre><code class="language-javascript">' + JSON.stringify(groupsArr, undefined, 2) + '</code></pre>' +  
 				'<p></p>' +
-				'<p>...jomfruturer er ofte veldig korte, og denne er intet unntak ;) Nå vil jeg at du lukker dette lille viduet og ' + 
+				'<p>...jomfruturer er ofte over på kort tid, og denne er intet unntak ;) Nå vil jeg at du lukker dette lille viduet og ' + 
 				'scroller videre nedover siden for mer detaljer.</p>' 
 			);
 			// Dump svaret i konsollen også

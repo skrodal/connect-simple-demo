@@ -5,7 +5,10 @@
  * 
  * 1. Gi denne fila navnet connect_auth.js (fjern '-SAMPLE')
  * 2. Registrer en ny klient i DASHBOARD
- * 3. Fyll inn linjene 16-18 med info fra DASHBOARD
+ * 3. Fyll inn linjene 19-21 med info fra DASHBOARD
+ * 
+ * @author Simon Skrødal
+ * @since August 2015
  */
  
  var CONNECT_AUTH = (function () {

@@ -3,9 +3,10 @@
 <!-- 
 	Tittel: Connect Enkel Demo
 	Beskrivelse: En særdeles enkel demo av UNINETTs tjenesteplattform Connect.
-	URL: https://www.uninett.no/tjenester/tjenesteplattform
+	Se: https://www.uninett.no/tjenester/tjenesteplattform
 	
-	Av: Simon Skrødal, UNINETT
+  @author Simon Skrødal
+  @since August 2015
 -->
 
 <html lang="en">
@@ -71,6 +72,7 @@
       
       
       
+     
       <div class="content-wrapper">
         <section class="content">
           <!----------------------------------------------- VELKOMMEN ----------------------------------------------->          
@@ -88,12 +90,47 @@
               <span class="label bg-orange icon ion-ios-star fc-user-other"><!--CONNECT--></span>
             </div>
           </div>
+          
+          <div id="modal-welcome" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-light-blue">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Velkommen</h4>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Det du glaner på nå er en <code>klient</code>. Ikke for å skryte, men jeg er laget kun med nettleserkode -- 
+                    <code>HTML</code> og <code>JavaScript</code> -- og kan kjøre hvorsomhelst på hvasomhelst ;-)    
+                  </p>
+                  
+                  <p>
+                    Jeg er interaktiv og full av eksempler, informasjon og pekere som kan være nyttig for å lære om Connect for første 
+                    gang eller bruke som referansepunkt lenger ned i løypa. 
+                  </p>
+                  
+                  <p>
+                    Om du vil kjøre meg på din egen server kan du <a class="client-github-source" target="_blank">laste meg ned på GitHub</a> 
+                    og registrere meg på nytt i <code>Connect</code>. Les videre så skal jeg vise deg hvordan du gjør det.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          
+          
           <!----------------------------------------------- ./VELKOMMEN ---------------------------------------------->
 
 
 
 
-          <!------------------------------------------------ INTRO ------------------------------------------------>          
+          <!------------------------------------------------ INTRO ------------------------------------------------> 
+          
+          <h2 class="page-header">Innføring</h2>
+          
           <div class="row">
             <div class="col-lg-12">
               <div class="box box-info">
@@ -102,13 +139,9 @@
                 </div>  
                 <div class="box-body">
                   <p>
-                    Det du glaner på nå er en <code>klient</code>. Ikke for å skryte, men jeg er laget kun med nettleserkode -- 
-                    <code>HTML</code> og <code>JavaScript</code> -- og kan kjøre hvorsomhelst på hvasomhelst ;-)    
-                  </p>
-                  <p>
-                    Da du kom for å besøke meg ante jeg ikke hvem du var. <code>Connect</code> kjenner imidlertid <em>meg</em>, 
-                    så jeg sendte deg aller først til henne med bl.a. følgende informasjon:
-                  </p>
+                    Da du kom for å besøke meg, ante jeg ikke hvem du var. <code>Connect</code> kjenner imidlertid <em>meg</em>, 
+                    så derfor jeg sendte deg aller først til henne med følgende informasjon:
+                  </p> 
                   
                   <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>    
                   
@@ -126,10 +159,8 @@
                     <img src="images/connect_core_scopes.png" class="img-responsive img-thumbnail">  
                   </p>
                   
-                  
-                  
                   <p>
-                    Da du sa til <code>Connect</code> at det er greit, sendte hun deg tilbake hit (til min <code>redirect_uri</code>). 
+                    Da du sa til <code>Connect</code> at det er greit å dele dette med meg, sendte hun deg tilbake hit (til min <code>redirect_uri</code>). 
                   </p>
                   
                   <p>
@@ -153,13 +184,15 @@
           </div>
           <!------------------------------------------------ ./INTRO ------------------------------------------------>
           
+          <h2 class="page-header">Rådata fra Connect endepunkter</h2>
+          
           <p>
-            Når jomfruturen er vel overstått vil boksene nedenfor vise samme informasjon som du fikk i hvert steg på reisen (klikk på 
+            Boksene nedenfor vil vise samme informasjon som du fikk i hvert steg på reisen (klikk på 
             <i class="ion ion-plus"></i> knappen for å vise/gjemme innholdet i hver boks).  
           </p>
           
           <p>
-            Om du ser deg litt rundt på siden nå så vil du også legge merke til at navnet ditt (og kanskje til og med bilde) dukker opp her og der.
+            Etter at informasjonen er mottatt vil du også legge merke til at navnet ditt (og kanskje til og med bilde) dukker opp her og der.
           </p>
           
           <!----------------------------------------- TOKEN/USERINFO/GROUPS ----------------------------------------->
@@ -233,14 +266,14 @@
           </div> <!-- ./row -->
           <!---------------------------------------- ./TOKEN/USERINFO/GROUPS ---------------------------------------->          
           
-          <h3>En mer detaljert gjennomgang</h3>
+          <h2 class="page-header">En mer detaljert gjennomgang</h2>
           
           <!------------------------------------------------ DETALJER ------------------------------------------------>          
           <div class="row">
             <div class="col-lg-12">
               <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Mer om hvordan:</h3>
+                    <h3 class="box-title">Klienter og API Gatekeepere</h3>
                 </div>  
                 <div class="box-body">
                   
