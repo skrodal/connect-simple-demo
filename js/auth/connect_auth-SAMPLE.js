@@ -2,6 +2,10 @@
  * Konfigurer JSO modul for bruk med denne klienten og start autentiseringsflyt. 
  *
  * Med referanser til DASHBOARD menes https://dashboard.feideconnect.no.
+ * 
+ * 1. Gi denne fila navnet connect_auth.js (fjern '-SAMPLE')
+ * 2. Registrer en ny klient i DASHBOARD
+ * 3. Fyll inn linjene 16-18 med info fra DASHBOARD
  */
  
  var CONNECT_AUTH = (function () {
@@ -9,10 +13,10 @@
 	 var CONFIG = 
 	 {
 		 fc_auth 		:	{
-			providerID		: 	"CONNECT",													// Valgfritt
-			client_id		:	"f299e692-473a-4ac1-91c3-7e7872d1548d",						// Klient-spesifikk, satt i DASHBOARD
-			redirect_uri	: 	"https://127.0.0.1/sites/FEIDE-CONNECT/simple-demo/",		// Klient-spesifikk, settes i DASHBOARD
-			authorization	: 	"https://auth.feideconnect.no/oauth/authorization",			// Alltid samme
+			providerID		: 	"HVA SOM HELST",	// Valgfritt
+			client_id		:	"MÅ FYLLES INN",	// Klient-spesifikk, satt i DASHBOARD
+			redirect_uri	: 	"MÅ FYLLES INN",	// Klient-spesifikk, settes i DASHBOARD
+			authorization	: 	"https://auth.feideconnect.no/oauth/authorization",		// Alltid samme
 		 },
 		 fc_endpoints	:	{
 			// For tilgang må klienten ha bedt om dette scopet i Dashboard
@@ -39,9 +43,6 @@
 		redirect_uri	: 	CONFIG.fc_auth.redirect_uri,
 		authorization	: 	CONFIG.fc_auth.authorization,
 		debug			: 	true
-		//scopes: { 
-		//	require: 	["userinfo"]
-		//},
 	});
 	
 	// Autentisering. Fanger respons-parametre -- denne bør kalles så tidlig som mulig, før applikasjonen lastes. 
@@ -72,15 +73,3 @@
 	}
 
 })();
-
-
-
-	
-	
-/*
-	scopes: {
-		request: ["groups", "userinfo", "userinfo-feide", "userinfo-mail", "userinfo-photo", "gk_mediasiteapi", "gk_mediasiteapi_admin", "gk_ecampus-kind", "gk_ecampus-kind_admin"],
-		require: ["groups", "userinfo", "userinfo-feide", "userinfo-mail", "userinfo-photo", "gk_mediasiteapi", "gk_mediasiteapi_admin", "gk_ecampus-kind", "gk_ecampus-kind_admin"]
-	},
-
-*/
