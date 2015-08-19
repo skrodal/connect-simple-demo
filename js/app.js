@@ -30,6 +30,8 @@
 			'// Hvor jeg bor:\n' +
 			'redirect_uri : "'+ CONNECT_AUTH.config().fc_auth.redirect_uri + '"'
 		);
+		$('a.client-github-source').attr('href', CONNECT_AUTH.config().links.source);
+		$('.client-github-source:not(a)').text(CONNECT_AUTH.config().links.source);
 	}
 	
 

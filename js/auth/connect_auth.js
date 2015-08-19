@@ -25,6 +25,9 @@
 		 api_endpoints	:	{
 			// Andre 3.parts-APIer klienten har tilgang til via Connect (DASHBOARD) 
 			simons_vitser : ''
+		 }, 
+		 links	:	{
+			 source	: 'https://github.com/skrodal/connect-simple-demo'
 		 }
 	 };
 	 
