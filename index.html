@@ -1,0 +1,539 @@
+<!doctype html>
+
+<!-- 
+	Tittel: Connect Enkel Demo
+	Beskrivelse: En særdeles enkel demo av UNINETTs tjenesteplattform Connect.
+	URL: https://www.uninett.no/tjenester/tjenesteplattform
+	
+	Av: Simon Skrødal, UNINETT
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>UNINETT Connect Demo</title>
+    
+    <!-- JSO av Andreas Åkre Solberg: http://oauth.no/jso/ :: Dette er modulen som tar seg av OAuth med Connect -->
+    <script type="text/javascript" src="js/auth/jso.js"></script>
+    <!-- Konfigurering og bittelitt kode for å sparke igang JSO autentiseringsflyt -->
+    <script type="text/javascript" src="js/auth/connect_auth.js"></script>
+     <!-- Bootstrap -->
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Ikoner -->
+     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+     <!-- Styling av kode i UI -->
+     <link href="css/prism.css" rel="stylesheet" type="text/css"/>
+     <!-- Bootstrap template -->
+     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+     <link href="css/skins/skin-black.min.css" rel="stylesheet" type="text/css"/>
+  </head>
+  
+  <body class="skin-black sidebar-collapse">
+    <div class="wrapper">
+      
+      <!------------------------------------------------ NAVBAR ------------------------------------------------>
+      <header class="main-header">
+        <a href="../index.php" class="logo">
+            <img src="images/uninett_logo_dark_gray.svg" alt="UNINETT logo" type="image/svg+xml">
+        </a>
+
+        <nav class="navbar navbar-static-top" role="navigation">
+          <span class="navbar-title">CONNECT</span> demo
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown user user-menu">
+                <!-- Neddroppsmeny -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img  class="user-image fc-user-image"><!-- BILDE -->
+                  <span class="ion ion-log-in"> </span> <span class="fc-user-first-name"><!-- USERINFO --></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-header">
+                    <img class="img-circle fc-user-image"><!-- BILDE -->
+                    <p class="fc-user-full-name"><!-- USERINFO --></p>
+                    <span class="text-muted fc-user-role"><!--CONNECT--></span>
+                  </li>
+                  <li class="user-footer">
+                    <div class="pull-right">
+                      <a class="fc-logout" href="#" class="btn btn-sm ion-log-out"> Logg ut</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!----------------------------------------------- ./ NAVBAR ----------------------------------------------->
+      
+      
+      
+      <div class="content-wrapper">
+        <section class="content">
+          <!----------------------------------------------- VELKOMMEN ----------------------------------------------->          
+          <div class="jumbotron clearfix">
+            <div class="container">
+              <h1 class="icon ion-android-happy text-nowrap"> Hei <span class="fc-user-first-name">du<!-- USERINFO --></span>!</h1>
+              <p class="text-muted">- og velkommen til en liten UNINETT Connect demonstrasjon</p>
+              <small class="text-muted">Om du vil kjøre meg på din egen server kan du <a href="">laste meg ned på GitHub</a></small>
+            </div>
+            
+            <div class="pull-right">
+              <h2 class="text-muted"><span class="fc-user-full-name"><!-- USERINFO--></span></h2>
+              <span class="label bg-orange icon ion-ios-home fc-user-org"><!--CONNECT--></span>
+              <span class="label bg-orange icon ion-university fc-user-group"><!--CONNECT--></span>
+              <span class="label bg-orange icon ion-ios-star fc-user-other"><!--CONNECT--></span>
+            </div>
+          </div>
+          <!----------------------------------------------- ./VELKOMMEN ---------------------------------------------->
+
+
+
+
+          <!------------------------------------------------ INTRO ------------------------------------------------>          
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Følgende er viktig å få med seg altså:</h3>
+                </div>  
+                <div class="box-body">
+                  <p>
+                    Det du glaner på nå er en <code>klient</code>. Ikke for å skryte, men jeg er laget kun med nettleserkode -- 
+                    <code>HTML</code> og <code>JavaScript</code> -- og kan kjøre hvorsomhelst på hvasomhelst ;-)    
+                  </p>
+                  <p>
+                    Da du kom for å besøke meg ante jeg ikke hvem du var. <code>Connect</code> kjenner imidlertid <em>meg</em>, 
+                    så jeg sendte deg aller først til henne med bl.a. følgende informasjon:
+                  </p>
+                  
+                  <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>    
+                  
+                  <p>
+                    <code>Connect</code> ba deg først om å identifisere deg med en ID som hun kjenner igjen (eks. Feide, IDporten, ...).
+                  </p>
+                  
+                  <p>
+                    Deretter ble du bedt om å godta ("consent") at jeg også fikk vite litt mer om deg. Om du fulgte godt med så var hun ganske spesifikk. 
+                    Dette fordi jeg har tidligere snakket med <code>Connect</code> og fortalt henne akkurat hva slags informasjon jeg gjerne 
+                    vil ha fra de som besøker meg, bare se: 
+                  </p>
+                  
+                  <p>
+                    <img src="images/connect_core_scopes.png" class="img-responsive img-thumbnail">  
+                  </p>
+                  
+                  
+                  
+                  <p>
+                    Da du sa til <code>Connect</code> at det er greit, sendte hun deg tilbake hit (til min <code>redirect_uri</code>). 
+                  </p>
+                  
+                  <p>
+                    Enn så lenge vet jeg ingenting om deg, men <code>Connect</code> sendte med en <code>token</code> som er knyttet til 
+                    deg som bruker og meg som klient. Denne kan benyttes for å spørre litt rundt etter informasjon. 
+                    Jeg tenkte at dette er noe vi kan gjøre sammen slik at du kan lære litt mer om hva det er som foregår, okei? 
+                  </p>
+                  
+                  <p class="text-center">
+                    <button class="btn btn-info btnCallTokenInfo">Klikk her for å starte jomfruturen</button>  
+                  </p>  
+                  
+                </div>
+                <div class="box-footer text-muted">
+                    <p>
+                      Tips! Jeg dumper også alle svar (rådata) i nettleseren sin <code>konsoll</code>, så det er bare å ta en titt.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!------------------------------------------------ ./INTRO ------------------------------------------------>
+          
+          <p>
+            Når jomfruturen er vel overstått vil boksene nedenfor vise samme informasjon som du fikk i hvert steg på reisen (klikk på 
+            <i class="ion ion-plus"></i> knappen for å vise/gjemme innholdet i hver boks).  
+          </p>
+          
+          <p>
+            Om du ser deg litt rundt på siden nå så vil du også legge merke til at navnet ditt (og kanskje til og med bilde) dukker opp her og der.
+          </p>
+          
+          <!----------------------------------------- TOKEN/USERINFO/GROUPS ----------------------------------------->
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="box box-info collapsed-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Connect Token</h3>
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <!-- TOKEN -->
+                    <button class="btn btn-link btnCallTokenInfo">Klikk for mer info om <code>token</code></button>
+                    <pre>
+                      <code class="language-javascript fc-token-dump"></code>
+                    </pre>                
+                </div>
+                <div class="box-footer">
+                  <p>Endepunkt: <code class="fc-auth-uri"><!-- CONFIG --></code></p>
+                  <p>Docs: <a href="http://feideconnect.no/docs/authorization/" target="_blank">http://feideconnect.no/docs/authorization/</a></p>
+                  
+                </div>
+              </div>
+            </div> <!-- ./col -->
+           
+            <div class="col-lg-4">
+              <div class="box box-success collapsed-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Connect /userinfo</h3>
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">  
+                    <!-- USERINFO -->
+                    <button class="btn btn-link btnCallUserInfo">Klikk for mer info om <code>/userinfo</code></button>
+                    <pre>
+                      <code class="language-javascript fc-userinfo-dump"></code>
+                    </pre>                       
+                </div>
+                <div class="box-footer">
+                  <p>Endepunkt: <code class="fc-userinfo-uri"><!-- CONFIG --></code></p>
+                  <p>Docs: <a href="http://feideconnect.no/docs/oauth-authentication/" target="_blank">http://feideconnect.no/docs/oauth-authentication/</a></p>
+                </div>
+              </div>
+            </div> <!-- ./col -->
+            
+            <div class="col-lg-4">
+              <div class="box box-warning collapsed-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Connect /groups/me/groups</h3>
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <!-- GROUPS -->
+                    <button class="btn btn-link btnCallUserGroups">Klikk for mer info om <code>/groups/me/groups</code></button>
+                    <pre>
+                      <code class="language-javascript fc-groups-dump"></code>
+                    </pre>                            
+                </div>
+                <div class="box-footer">
+                  <p>Endepunkt: <code class="fc-groups-uri"><!-- CONFIG --></code></p>
+                  <p>Docs: <a href="http://feideconnect.no/docs/groups/" target="_blank">http://feideconnect.no/docs/groups/</a></p>
+                </div>
+              </div>
+            </div> <!-- ./col -->
+          </div> <!-- ./row -->
+          <!---------------------------------------- ./TOKEN/USERINFO/GROUPS ---------------------------------------->          
+          
+          <h3>En mer detaljert gjennomgang</h3>
+          
+          <!------------------------------------------------ DETALJER ------------------------------------------------>          
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Mer om hvordan:</h3>
+                </div>  
+                <div class="box-body">
+                  
+                  <!-- Info: 
+                    Bootstrap tilbyr 'modals' (små popup-vinduer) som brukes flere steder på denne siden.
+                    Lenkene under fyrer av hver sin modal med innhold vha. attributtene data-toggle og data-target. 
+                  -->
+                    
+                  <p><strong>Klienter</strong></p>  
+                  <p>
+                    I jomfruturen din erfarte du hvordan vi snakket med <code>Connect</code> for identifisering og uthenting av informasjon. 
+                    La oss nå se kjapt på hvordan dette går for seg i bakgrunnen.
+                  </p>
+                  <!-- Vis DIV med ID #modal-connect-dashboard -->
+                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-connect-dashboard">Hvordan <code>Connect</code> vet hvem jeg (klient) er</button></p>
+                  <!-- osv... -->
+                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-client-structure">Hvordan jeg er skrudd sammen</button></p>
+                  
+                  <p><strong>API Gatekeepere</strong></p>
+                  
+                  <p>
+                    Frem til nå har vi snakket mest om autentiserings-aspektet ved <code>Connect</code> og noen kjerne-endepunkter som hun tilbyr, men dette er ikke alt.
+                  </p>
+                  
+                  <p>
+                    En super-viktig og super-nyttig funksjonalitet du får med <code>Connect</code> er tilgang til å bruke/dele informasjon via <code>API Gatekeepere</code>. Her er det 
+                    så mye kult jeg gjerne vil snakke om for å virkelig få deg til å se mulighetene, men min funksjon er å tilby en "liten UNINETT Connect demonstrasjon" 
+                    så jeg skal forsøke å fatte meg i korthet.
+                  </p>
+                  
+                  <p>
+                    La meg likevel si at API Gatekeeper-aspektet tilbyr, som jeg ser det, <del>to</del> <del>tre</del> fire hovedfunksjoner:
+                    
+                    <ol>
+                      <li>Den gjør det lett for deg å <em>dele</em> data (med andre eller bare deg selv) på en sikker måte (heter ikke <em>gatekeeper</em> for ingenting)</li>
+                      <li>Den gir deg mulighet til å "tappe" inn i og sy sammen data fra mange ulike APIer (dine egne og andres)</li>
+                      <li></li>
+                    </ol>
+                  </p>
+                  
+                  <p>
+                    
+                    
+                  </p>
+                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-connect-gatekeeper">Snakke med andre APIer</button></p>
+                  
+                    
+                    
+
+  
+                  <!------------------------------------------------ HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+                  <div id="modal-connect-dashboard" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light-blue">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Hvordan <code>Connect</code> vet hvem jeg (klient) er</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                            Tidligere fikk du vite at jeg fortalte <code>Connect</code> følgende om meg da jeg sendte deg til henne for autentisering:
+                          </p>
+                          
+                          <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>
+                          
+                          <p>
+                            Min egen URL er jo lett for meg å vite, men hvor fikk jeg tak i min <code>client_id</code>? Jo det skal jeg fortelle deg nå.
+                          </p>
+                          
+                          <p>
+                            <code>Connect</code> har sin egen <strong>selvbetjente</strong> <code>Dashboard</code>, der du som utvikler kan registrere 
+                            klienter som meg, samt datakilder (eller APIer) som vi skal se på litt senere.
+                          </p>
+                          
+                          <p>
+                            Å registrere en klient er fort gjort og har umiddelbar virkning, så du slipper å vente på at noen andre må gjøre noe. 
+                            Selv ble jeg registrert og konfigurert på under 2 minutter, det er jeg sikker på!! Her ser du hvordan jeg ble født:
+                          </p>
+                          
+                          <p>
+                            <img src="images/connect_client_registration.png" class="img-responsive img-thumbnail">
+                          </p>
+                          
+                          <p>
+                            Deretter, med noen enkle klikk, ble jeg konfigurert i <code>Dashboard</code>'en til å få tilgang til de <code>scopes</code> som jeg 
+                            fortalte deg om tidligere (<code>userinfo-feide</code>, <code>groups</code>, m.fl.). 
+                          </p>
+                          
+                          <p>
+                            Det var altså ved registrering i <code>Dashboard</code> at ble jeg tildelt en unik <code>client_id</code>, som du finner igjen på 
+                            <code>OAuth Details</code>-siden:
+                          </p>
+                          
+                          <p>
+                            <img src="images/connect_client_oauth_details.png" class="img-responsive img-thumbnail">  
+                          </p>
+                          
+                          <div class="alert bg-light-blue">
+                            <p>
+                              <strong>Husk!</strong><br> 
+                              Dersom du flytter klienten til en ny URL så MÅ du huske å oppdatere <code>redirect_uri</code> både i 
+                              Connect <code>Dashboard</code> og i koden din!  
+                            </p>
+                          </div>
+                          
+                          <p>
+                            Okei! Nå vet vi hvor/hvordan jeg er registrert med <code>Connect</code>. Stikk for all del innom 
+                            <a href="https://dashboard.feideconnect.no/" target="_blank">https://dashboard.feideconnect.no/</a> og 
+                            ta en titt selv.
+                          </p>
+                          
+                          <p>
+                            I neste avsnitt ser vi på hvordan jeg er skrudd sammen slik at jeg faktisk kan sende deg til <code>Connect</code> 
+                            for autentisering og snakke videre med henne i etterkant.
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  <!------------------------------------------------ ./HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+  
+
+                  <!------------------------------------------------ HVORDAN JEG ER SKRUDD SAMMEN MODAL ------------------------------------------------>   
+                  <div id="modal-client-structure" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light-blue">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Hvordan jeg er skrudd sammen</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                            Jeg nevnte innledningsvis at jeg er skrevet i kun <code>HTML</code> og <code>JavaScript</code>. 
+                            Mens tradisjonell Feide-pålogging krever et relativt komplekst oppsett på serverside med en SAML 2.0 programvarepakke 
+                            (f.eks. SimpleSAMLphp), kan du altså med <code>Connect</code> autentisere brukere med bare <code>JavaScript</code> 
+                            om du vil. Åja, og så slipper du selvfølgelig styret med idp-test, XML metadata, varsling til Feide om hvilke vertsorganisasjoner som 
+                            skal kunne bruke tjenesten og at vertsorganisasjonene må aktivt åpne opp for at deres brukere kan ta i bruk tjenesten, osv... 
+                          </p>
+                          
+                          <p>
+                            Selv bruker jeg Andreas Solberg sin JSO-modul for OAuth 2.0 
+                            (<a href="https://github.com/andreassolberg/jso" target="_blank">GitHub</a>) for å ta seg av autentisering. 
+                            Kode for å få til dette er <strong>sørgelig enkelt</strong>, se her da:  
+                          </p>
+
+<pre><code class="language-javascript">
+// Inkluder JSO-modul
+&lt;script type="text/javascript" src="js/auth/jso.js"></script>
+// Konfigurer JSO 
+var jso = new JSO({
+  client_id : 'id fra Connect Dashboard',
+  redirect_uri : 'URL til der jeg bor (gjerne 127.0.0.1 mens du utvikler)',
+  authorization	: 'https://auth.feideconnect.no/oauth/authorization'
+});
+// callback() sender deg til Connect og fanger hennes respons ved retur. callback() bør kalles så tidlig som mulig, før applikasjonen lastes. 
+jso.callback();
+</code></pre>  
+
+                          <p>
+                            Når bruker så er autentisert kan du bruke JSO som følger:
+                          </p>
+
+<pre><code class="language-javascript">
+// Slå på JQuery for JSO (forenkler AJAX kall)
+JSO.enablejQuery($);
+// Gjør et kall med din JSO instans - jso()
+jso().ajax({
+			url: 'https://auth.feideconnect.no/userinfo',
+			dataType: 'json'
+      }).done(function(userObj){
+        // Voila!
+      });
+// Utlogging gjør jeg på denne måten:
+jso.wipeTokens();				
+window.location.replace("https://auth.feideconnect.no/logout"); 
+</code></pre> 
+
+                          <p>
+                            ...du kan lese mer om - og laste ned - JSO på <a href="https://github.com/andreassolberg/jso" target="_blank">GitHub</a>. 
+                            Du kan også studere kildekoden min for å se hvordan <em>jeg</em> gjør det.
+                          </p>               
+                          
+                          <p>
+                            En liten ting til: klienter <em>må</em> ikke bruke JSO (eller JavaScript) for å autentisere seg med Connect altså. Standarden 
+                            heter OAuth 2.0, og du kan bruke nesten hva som helst for å snakke med den. 
+                            Her er <a href="http://feideconnect.no/docs/oauth-libraries/" target="_blank">en haug med biblioteker</a> i mange 
+                            ulike språk (Python, PhP, Ruby, .net, Java +++++) som du kan se på, eller du kan skrive din egen. Det er også lett å modifisere 
+                            moduler som er ferdigskrevet for autentisering med Google/Facebook/Twitter/etc til å virke med Connect.
+                          </p>
+                          
+                          <p>
+                            Felles for alle biblioteker/moduler er at de følger en standard som egentlig er veldig enkel (når du først har skjønt flyten) og frittstående i 
+                            natur.
+                          </p>
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                <!------------------------------------------------ ./HVORDAN JEG ER SKRUDD SAMMEN MODAL ------------------------------------------------>
+
+
+
+
+                <!------------------------------------------------ HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+                <div id="???" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header bg-light-blue">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                      </div>
+                      <div class="modal-body">
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <!------------------------------------------------ ./HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+
+                  
+                  
+                </div><!-- ./box-body -->
+                <div class="box-footer text-muted">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!------------------------------------------------ ./INTRO ------------------------------------------------>
+          
+          
+        </section>
+      </div>
+      
+      
+            
+      
+      
+      <!------------------------------------------------ FOOTER ------------------------------------------------>
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <a href="http://uninett.no">UNINETT.no</a>
+        </div>
+        <a href="http://feideconnect.no/docs/gettingstarted/">Dokumentasjon</a> :: 
+        <a href="https://dashboard.feideconnect.no/#!/_">Dashboard</a> :: 
+        <a href="https://min.feideconnect.no/#!/">Min Connect</a> ::
+        <a href="https://groups.feideconnect.no/#!/">Grupper</a>
+      </footer>
+      <!----------------------------------------------- ./FOOTER ------------------------------------------------>
+
+    </div><!-- ./wrapper -->
+
+  
+    <!-- For info/feilmeldinger -->
+    <div id="alertModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-light-blue">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+  
+    <!-- JQuery, såklart... -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Bootstap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- UI -->
+    <script type="text/javascript" src="js/ui/AdminLTE.min.js"></script>
+    <!-- Styling av kode i UI -->
+    <script type="text/javascript" src="js/ui/prism.js"></script>
+    <!-- JS for klienten -->
+    <script type="text/javascript" src="js/connect.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+   
+  </body>
+</html>
