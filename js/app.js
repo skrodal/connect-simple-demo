@@ -15,6 +15,11 @@
 			showWelcomeMessage();
 			// Oppdater grensesnitt med info vi har for hånden
 			updateUI();
+			// Vis sideinnhold
+			$('#mainContent').removeClass('hidden');
+		} else {
+			// Vis melding før redirect til Connect consent
+			UTILS.alert("Jeg vet ikke hvem du er!", "Sender deg til Connect for autentisering. Sees snart :-)");
 		}
 	});
 	
@@ -36,8 +41,13 @@
 			'// Hvor jeg bor:\n' +
 			'redirect_uri : "'+ CONNECT_AUTH.config().fc_auth.redirect_uri + '"'
 		);
-		$('a.client-github-source').attr('href', CONNECT_AUTH.config().links.source);
-		$('.client-github-source:not(a)').text(CONNECT_AUTH.config().links.source);
+		// Kildekode for denne klienten på GitHub
+		$('a.client-github-source').attr('href', CONNECT_AUTH.config().links.client_source);
+		$('.client-github-source:not(a)').text(CONNECT_AUTH.config().links.client_source);
+		
+		// Kildekode for vitse-API på GitHub
+		$('a.api-github-source').attr('href', CONNECT_AUTH.config().links.api_source);
+		$('.api-github-source:not(a)').text(CONNECT_AUTH.config().links.api_source);
 	}
 	
 
@@ -62,13 +72,13 @@
 		// UTILS ligger nederst i denne fila
 		UTILS.alert(
 			'Velkommen!', 
-			'<p>Jepp, du er tydeligvis autentisert, for jeg har fått en <code>token</code>:</p>' +
+			'<p>Jepp, du er tydeligvis autentisert, for <code>Connect</code> har gitt meg en <code>token</code>:</p>' +
 			'<pre><code class="language-javascript">' + token + '</code></pre>' + 
 			'<p>Alt vel og bra det, men <strong>hva heter du???</strong></p>' +
 			'<p>Det kan du si meg om du klikker på knappen nedenfor. Da kaller vi Connect sitt endepunkt <code>/userinfo</code> som vet mer om deg.</p>' +
 			'<p>Før du klikker; ta en titt over på hvilke <code>scopes</code> jeg har tilgang til. Kan du gjette hva vi får i svar fra <code>/userinfo</code>?</p>' +
 			// MERK: Denne knappen fyrer av et AJAX-kall og blir tatt hånd om i koden umiddelbart nedenfor
-			'<p><button class="btn btn-info ion ion-code-download btnCallUserInfo" data-dismiss="modal"> /userinfo</button></p>' 
+			'<p><button class="btn btn-info btnCallUserInfo" data-dismiss="modal"><i class="ion ion-code-download"></i> /userinfo</button></p>' 
 			);
 			
 			// Vis i kodevindu på forsiden
@@ -110,7 +120,7 @@
 				'For noen klienter er det sikkert mer enn nok.</p>' +
 				'<p>...men du? Hva med tilhørighet? Hvor kommer du fra og sånn? La oss prøve å kalle et annet innebygd ("core") Connect-endepunkt: <code>/groups/me/groups</code>:</p>' +
 				// MERK: Denne knappen fyrer av et AJAX-kall
-				'<p><button class="btn btn-info ion ion-code-download btnCallUserGroups" data-dismiss="modal"> /groups/me/groups</button></p>' 
+				'<p><button class="btn btn-info btnCallUserGroups" data-dismiss="modal"><i class="ion ion-code-download"></i> /groups/me/groups</button></p>' 
 			);
 			// Dump svaret i konsollen også
 			console.log('Her er svaret fra ' + CONNECT_AUTH.config().fc_endpoints.userinfo + ':');
@@ -187,6 +197,22 @@
 	// ---------------------- ./GROUPS ----------------------------------------------------------------------
 	
 	
+	
+	// ---------------------- JOKES (Vitse-API) ----------------------------------------------------------------------
+		
+		
+	$('.btnGetJoke').on('click', function() {
+		var $btn = $(this).button('loading')
+        
+		// Se jokes.js for kode
+		$.when(JOKES.random()).done(function(joke){
+			$('#jokeContainer').text(joke);
+			$btn.button('reset');
+		});
+	});	
+		
+	// ---------------------- JOKES ----------------------------------------------------------------------
+		
 		
 	
 	// Når en 'logg ut' lenke/knapp blir trykket

@@ -32,7 +32,7 @@
      <link href="css/skins/skin-black.min.css" rel="stylesheet" type="text/css"/>
   </head>
   
-  <body class="skin-black sidebar-collapse">
+  <body class="skin-black sidebar-collapse fixed">
     <div class="wrapper">
       
       <!------------------------------------------------ NAVBAR ------------------------------------------------>
@@ -74,8 +74,7 @@
       
      
       <div class="content-wrapper">
-        <section class="content">
-          <!----------------------------------------------- VELKOMMEN ----------------------------------------------->          
+        
           <div class="jumbotron clearfix">
             <div class="container">
               <h1 class="icon ion-android-happy text-nowrap"> Hei <span class="fc-user-first-name">du<!-- USERINFO --></span>!</h1>
@@ -90,7 +89,11 @@
               <span class="label bg-orange icon ion-ios-star fc-user-other"><!--CONNECT--></span>
             </div>
           </div>
+        
+        <section id="mainContent" class="content hidden">
+          <!----------------------------------------------- VELKOMMEN ----------------------------------------------->          
           
+          <!-- Skjult velkomst-modal-->
           <div id="modal-welcome" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -111,7 +114,7 @@
                   
                   <p>
                     Om du vil kjøre meg på din egen server kan du <a class="client-github-source" target="_blank">laste meg ned på GitHub</a> 
-                    og registrere meg på nytt i <code>Connect</code>. Les videre så skal jeg vise deg hvordan du gjør det.
+                    og registrere meg på nytt i <code>Connect</code> som din egen klient. Les videre så skal jeg vise deg hvordan du gjør det.
                   </p>
                 </div>
                 <div class="modal-footer">
@@ -128,8 +131,7 @@
 
 
           <!------------------------------------------------ INTRO ------------------------------------------------> 
-          
-          <h2 class="page-header">Innføring</h2>
+
           
           <div class="row">
             <div class="col-lg-12">
@@ -138,21 +140,21 @@
                     <h3 class="box-title">Følgende er viktig å få med seg altså:</h3>
                 </div>  
                 <div class="box-body">
+                  <p>Da du kom for å besøke meg, ante jeg ikke hvem du var.</p>
                   <p>
-                    Da du kom for å besøke meg, ante jeg ikke hvem du var. <code>Connect</code> kjenner imidlertid <em>meg</em>, 
-                    så derfor jeg sendte deg aller først til henne med følgende informasjon:
+                    <code>Connect</code> kjenner imidlertid <em>meg</em> og derfor sendte jeg deg aller først til henne med følgende informasjon (se kildekode i <code>connect_auth.js</code>):
                   </p> 
                   
-                  <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>    
+                  <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>
                   
                   <p>
                     <code>Connect</code> ba deg først om å identifisere deg med en ID som hun kjenner igjen (eks. Feide, IDporten, ...).
                   </p>
                   
                   <p>
-                    Deretter ble du bedt om å godta ("consent") at jeg også fikk vite litt mer om deg. Om du fulgte godt med så var hun ganske spesifikk. 
-                    Dette fordi jeg har tidligere snakket med <code>Connect</code> og fortalt henne akkurat hva slags informasjon jeg gjerne 
-                    vil ha fra de som besøker meg, bare se: 
+                    Deretter ble du bedt om å godta at jeg også fikk vite litt mer om deg ("consent form") og om du fulgte godt med 
+                    så var hun ganske så spesifikk. Jeg har nemlig snakket med <code>Connect</code> tidligere og fortalt henne akkurat 
+                    hva slags informasjon jeg gjerne vil ha fra de som besøker meg (i <a href="https://dashboard.feideconnect.no" target="_blank">Connect Dashboard</a>), bare se: 
                   </p>
                   
                   <p>
@@ -189,10 +191,6 @@
           <p>
             Boksene nedenfor vil vise samme informasjon som du fikk i hvert steg på reisen (klikk på 
             <i class="ion ion-plus"></i> knappen for å vise/gjemme innholdet i hver boks).  
-          </p>
-          
-          <p>
-            Etter at informasjonen er mottatt vil du også legge merke til at navnet ditt (og kanskje til og med bilde) dukker opp her og der.
           </p>
           
           <!----------------------------------------- TOKEN/USERINFO/GROUPS ----------------------------------------->
@@ -292,36 +290,47 @@
                   <!-- osv... -->
                   <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-client-structure">Hvordan jeg er skrudd sammen</button></p>
                   
-                  <p><strong>API Gatekeepere</strong></p>
+                  <p><strong>API Gatekeepere (API GK)</strong></p>
                   
                   <p>
                     Frem til nå har vi snakket mest om autentiserings-aspektet ved <code>Connect</code> og noen kjerne-endepunkter som hun tilbyr, men dette er ikke alt.
                   </p>
                   
                   <p>
-                    En super-viktig og super-nyttig funksjonalitet du får med <code>Connect</code> er tilgang til å bruke/dele informasjon via <code>API Gatekeepere</code>. Her er det 
-                    så mye kult jeg gjerne vil snakke om for å virkelig få deg til å se mulighetene, men min funksjon er å tilby en "liten UNINETT Connect demonstrasjon" 
+                    En super-viktig og super-nyttig funksjonalitet du får med <code>Connect</code> er muligheten til å bruke/dele informasjon via hennes <code>API Gatekeeper</code>. 
+                    Her er det så mye kult jeg gjerne vil snakke om for å virkelig få deg til å se mulighetene, men min funksjon er å tilby en "liten UNINETT Connect demonstrasjon" 
                     så jeg skal forsøke å fatte meg i korthet.
                   </p>
                   
                   <p>
-                    La meg likevel si at API Gatekeeper-aspektet tilbyr, som jeg ser det, <del>to</del> <del>tre</del> fire hovedfunksjoner:
+                    La meg først likevel si at API GK-aspektet tilfører, som jeg ser det, <del>to</del> <del>tre</del> <del>fire</del> fem hovedgevinster:
                     
                     <ol>
-                      <li>Den gjør det lett for deg å <em>dele</em> data (med andre eller bare deg selv) på en sikker måte (heter ikke <em>gatekeeper</em> for ingenting)</li>
-                      <li>Den gir deg mulighet til å "tappe" inn i og sy sammen data fra mange ulike APIer (dine egne og andres)</li>
-                      <li></li>
+                      <li>Den gjør det lett for deg å <em>dele</em> datakilder (med andre eller bare dine egne klienter) på en sikker måte (heter ikke <em>gatekeeper</em> for ingenting)</li>
+                      <li>Den gir deg mulighet til å "tappe" inn i og sy sammen data fra Connect samt mange ulike APIer (dine egne og andres) - en "fleretasjers databuss" om du vil</li>
+                      <li>API GK muliggjør tilgangsstyring på flere nivåer: hvilke klienter, hvilke scopes, brukere...</li>
+                      <li>Mindre admin: Connect Dashboard er selvbetjent, og tjenestetilbydere kan abonnere på dine APIer uten at du trenger å gjøre noe. Dashboard gir deg også innsikt i hvem som bruker dine data.</li>
+                      <li>Selv om ditt endepunkt flyttes forblir API GK URL konstant (trenger bare oppdatere i Dashboard)</li>
                     </ol>
                   </p>
                   
-                  <p>
-                    
-                    
-                  </p>
-                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-connect-gatekeeper">Snakke med andre APIer</button></p>
+   
+                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-other-apis">Hvordan snakke med andre APIer</button></p>
+                  
+                  <p><button class="btn btn-link" data-toggle="modal" data-target="#modal-joke-api">Hvordan lage og dele sitt eget API</button></p>
+                  
+                  <p>Sjekk ut dokumentasjon og enkel kode for vitse-API på <a class="api-github-source" target="_blank">GitHub</a> (motivator: du finner ALLE de gode vitsene i kildefila!!).</p>
                   
                     
-                    
+                  <p><strong>Dashboard oversikt</strong></p>
+                  <p>
+                    Til slutt: I <code>Connect Dashboard</code> får du en enkel oversikt over alle dine klienter og APIer, eks: 
+                  </p>
+                  
+                  <p>
+                    <img src="images/connect_dashboard_simons.png" class="img-responsive img-thumbnail">
+                  </p>
+
 
   
                   <!------------------------------------------------ HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
@@ -484,35 +493,193 @@ window.location.replace("https://auth.feideconnect.no/logout");
 
 
 
-                <!------------------------------------------------ HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
-                <div id="???" class="modal fade">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header bg-light-blue">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"></h4>
-                      </div>
-                      <div class="modal-body">
-                        
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                <!------------------------------------------------ ./HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+                  <!------------------------------------------------ SNAKKE MED ANDRE APIer ------------------------------------------------>
+                  <div id="modal-other-apis" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light-blue">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Snakke med andre APIer</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                           Forfatteren min har juksa litt og laget et superenkelt API som jeg allerede har tilgang til. At han er bedre til å lage vitser enn 
+                           kode er det ingen tvil om, bare vent å se :)  
+                          </p>
+                          
+                          <p>
+                            I Connect Dashboard ligger et API med ID <code>simons-vitser</code> ("Det beste fra Simon's vitsekolleksjon!") tilgjengelig. 
+                            Jeg er konfigurert til å ha lov til å snakke med dette APIet. Se her: 
+                          </p>
+                          <p>
+                            <img src="images/connect_api_scopes_select.png" class="img-responsive img-thumbnail">
+                          </p>
 
+                          <p>
+                            Legg merke til at eier av APIet har sagt at alle scopes, bortsett fra 18-årsgrense, kan benyttes uten manuell godkjenning. Dersom vi 
+                            velger å ta med 18-årsgrense, blir Simon Skrødal (eier av API) varslet om at en klient har etterspurt denne tilgangen og Simon må ta 
+                            stilling til om dette er ok.
+                          </p>
+                          <p>
+                            Du skjønner sikkert hvorfor 18-årsgrense-scopet er moderert når du leser følgende:
+                          </p>
+                          
+                          <blockquote>
+                            En vits med 18-årsgrense kan ha særlig angstskapende stemning, og inneholde store mengder brutale og detaljerte voldshandlinger, særlig i kombinasjon med et angstskapende uttrykk. Skildringer av grov seksualisert vold gir normalt også 18-årsgrense. Vitser som Vitsetilsynet ikke har vurdert må fortelles med en 18-årsgrense.
+                          </blockquote>
+                          
+                          <p>
+                            Hehe. Vel, la oss se om vi kan få ut en vits eller to fra APIet da. AJAX-kallet som kjøres når du klikker knappen nedenfor finner du i fila <code>jokes.js</code>.
+                          </p>
+                          
+                          <blockquote id="jokeContainer"><!-- AJAX --></blockquote>
+                          <button class="btn btn-success btnGetJoke">Gi meg en vits</button>
+                          
+                          <p>
+                            Knappen over serverer altså morsomme vitser på random som perler på en snor. APIet vet at jeg kan få vitser fra alle scopes bortsett fra den 
+                            beryktede 18-årsgrensen. Hvilket scope vitsen er hentet fra ser du helt i starten på vitsen (eks. [15]).
+                          </p>
+                          
+                          <p>
+                            I neste avsnitt ser vi litt nøyere på hva APIet egentlig holder på med.
+                          </p>
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  <!------------------------------------------------ ./SNAKKE MED ANDRE APIer ------------------------------------------------>
+  
+  
+  
+  
+  
+                  <!------------------------------------------------ HVORDAN LAGE OG DELE SITT EGET API --------------------------------------------->
+                  <div id="modal-joke-api" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light-blue">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Hvordan lage og dele sitt eget API</h4>
+                        </div>
+                        <div class="modal-body">
+                          
+                          <p>La oss studere det supermorsomme vitse-api'et i litt mer detalj. For mer utfyllende informasjon kan du forresten laste ned/se på kildekode på 
+                            <a class="api-github-source" target="_blank">GitHub</a>.
+                          </p>
+                          
+                          <p>
+                            APIet er et enkelt PHP-script som ligger på en webtjener og alt det gjør er å ta imot en henvendelse og sende et tilfeldig svar (en vits) tilbake. 
+                            Scriptet forventer at henvendelser kommer fra en Connect-klient via Connect GK på følgende URL: <br>
+                            <code>https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/</code>  
+                          </p>
+                          
+                          <p>
+                            APIet ligger egentlig på et helt annet domene, men med Connect rutes altså alle kall via gatekeeper på URLen over. 
+                            Å registrere et API i Connect Dashboard er like enkelt som å registrere en klient; tilfør en <code>identifikator</code>, et navn og en URL og vips! 
+                          </p>
+                          
+                          <p>
+                            La oss si at vitse-APIet egentlig lå her:  <code>https://api.eksempel.no/api/connect/simons-vitser/index.php</code>. 
+                          </p>
+                          <p>  
+                            I Connect Dashboard oppgir vi da: 
+                            
+                            <ul>
+                              <li><code>endpoint</code> : <mark>https://api.eksempel.no</mark></li>
+                              <li><code>identifikator</code> : <mark>simons-vitser</mark></li>
+                            </ul> 
+                          </p>
+                          <p>
+                            URLen som Connect-klienter må bruke for å snakke med APIet ditt blir da: <br> 
+                            <code>https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/</code>  
+                          </p>
+                          
+                          <strong>Headere fra Connect GK</strong>
+                          
+                          <p>
+                            For å sikre oss om at klienten som kaller APIet faktisk er en autentisert Connect-klient, sender Connect GK med flere nyttige headere. 
+                           I PHP kan vi titte på f.eks. $_SERVER arrayen for å finne ut mer. Dersom klientkallet kom via Connect GK kan du forvente at disse feltene 
+                           medfølger:
+                          </p>
+                          
+<pre><code class="language-javascript">
+// Min ID som Connect ga meg ved registrering
+"HTTP_X_FEIDECONNECT_CLIENTID": "f299e692-473a-4ac1-91c3-7e7872d1548d",
+// Scopes jeg har tilgang til
+"HTTP_X_FEIDECONNECT_SCOPES": "9,15",
+// Bruker-ID til han som besøkte meg
+"HTTP_X_FEIDECONNECT_USERID": "835c8888-08a9-4332-9a18-074944355ad8",
+// Feide ID for samme bruker
+"HTTP_X_FEIDECONNECT_USERID_SEC": "feide:simon@uninett.no", 
+
+// API GK bruker/pass ("Trust"-meny i Dashboard for ditt API.)
+"PHP_AUTH_USER": "feideconnect",
+"PHP_AUTH_PW": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+</code></pre>
+                          
+                          <p>
+                            Med informasjonen over kan vi altså:
+                            <ul>
+                              <li>Autentisere klienten (sjekk at GK sender med riktig bruker/passord)</li>
+                              <li>Si noe om klienten som er på besøk (kjenne igjen (ID) og vite tilganger (scopes))</li>
+                              <li>Si noe om bruker som besøker klienten (ID, Feide)</li>
+                            </ul>   
+                          </p>
+                          
+                          <p>
+                            Hvilke muligheter! Tenk deg at din klient, som heter noe sånt som <mark>'Skal det Vær en Vits?'</mark>, gjennom Connect fikk tilgang til et FS-API (for studentdata), et værmeldings-API og vårt vitse-API. 
+                            Da kunne du f.eks. filtrert ut alle som studerer programmering og gitt disse brukerne bare finvær og de beste vitsene (om binære tall og sånn). 
+                          </p>
+                          
+                          <p>
+                            Sjekk ut dokumentasjon og enkel kode for vitse-API på <a class="api-github-source" target="_blank">GitHub</a>.
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  <!------------------------------------------------ ./HVORDAN LAGE OG DELE SITT EGET API ------------------------------------------->
+  
+  
+  
+  
+  
+                  <!------------------------------------------------ HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+                  <div id="???" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-light-blue">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+                  <!------------------------------------------------ ./HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
                   
                   
                 </div><!-- ./box-body -->
+                
                 <div class="box-footer text-muted">
 
                 </div>
               </div>
             </div>
           </div>
-          <!------------------------------------------------ ./INTRO ------------------------------------------------>
+          <!------------------------------------------------ ./DETALJER ------------------------------------------------>
           
           
         </section>
@@ -564,8 +731,10 @@ window.location.replace("https://auth.feideconnect.no/logout");
     <script type="text/javascript" src="js/ui/AdminLTE.min.js"></script>
     <!-- Styling av kode i UI -->
     <script type="text/javascript" src="js/ui/prism.js"></script>
-    <!-- JS for klienten -->
+    <!-- JS for å snakke med Connect og APIer -->
     <script type="text/javascript" src="js/connect.js"></script>
+    <script type="text/javascript" src="js/jokes.js"></script>
+    <!-- JS for klienten -->
     <script type="text/javascript" src="js/app.js"></script>
    
   </body>

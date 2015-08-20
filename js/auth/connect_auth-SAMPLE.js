@@ -15,13 +15,13 @@
 	 
 	 var CONFIG = 
 	 {
-		 fc_auth 		:	{
+		 fc_auth : {
 			providerID		: 	"HVA SOM HELST",	// Valgfritt
 			client_id		:	"MÅ FYLLES INN",	// Klient-spesifikk, satt i DASHBOARD
 			redirect_uri	: 	"MÅ FYLLES INN",	// Klient-spesifikk, settes i DASHBOARD
 			authorization	: 	"https://auth.feideconnect.no/oauth/authorization",		// Alltid samme
 		 },
-		 fc_endpoints	:	{
+		 fc_endpoints :	{
 			// For tilgang må klienten ha bedt om dette scopet i Dashboard
 			groups: 	"https://groups-api.feideconnect.no/groups/me/groups",		
 			// Base-URL for bildefil 		
@@ -29,11 +29,11 @@
 			// BrukerID, navn og profilbilde. For mer info (eks. epost, Feide-ting) må scopes etterspørres i Dashboard.
 			userinfo: 	"https://auth.feideconnect.no/userinfo",
 		 }, 
-		 api_endpoints	:	{
+		 api_endpoints : {
 			// Andre 3.parts-APIer klienten har tilgang til via Connect (DASHBOARD) 
-			simons_vitser : ''
+			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/',
 		 }, 
-		 links	:	{
+		 links : {
 			 source	: 'https://github.com/skrodal/connect-simple-demo'
 		 }
 	 };

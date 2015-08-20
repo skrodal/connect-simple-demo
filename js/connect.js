@@ -1,5 +1,5 @@
 /**
- * Alle kall til Connect og 3.-parts APIer er definert her.
+ * Alle kall til Connect "CORE" endepunkter (userinfo og groups) er definert her.
  * 
  * Autentisering ble gjort av /js/auth/connect.js og vi kan bruke variabel 
  * CONNECT derfra til å gjøre kall mot Connect endepunkter og APIer. Siden 
@@ -27,10 +27,11 @@ var CONNECT = (function () {
 	function getUserInfoXHR() {
 		return CONNECT_AUTH.jso().ajax({
 			url: CONNECT_AUTH.config().fc_endpoints.userinfo,
-			//oauth: { scopes: { request: ["userinfo userinfo-feide userinfo-mail userinfo-photo"] } },
 			dataType: 'json'
 		}).pipe(function (data) {
-			return data.user;
+			console.log("Rådata fra endepunkt /userinfo: ");
+			console.log(data);
+			return data.user;	// I denne demoen bryr vi oss bare om 'user'-objektet, så vi piper det i XHR-svaret tilbake.
 		}).fail(function (jqXHR, textStatus, error) {
 			UTILS.alert(
 				"Connect /userinfo", 
@@ -47,7 +48,6 @@ var CONNECT = (function () {
 	function getUserGroupsXHR() {
 		return CONNECT_AUTH.jso().ajax({
 			url: CONNECT_AUTH.config().fc_endpoints.groups,
-			//oauth: { scopes: { request: ["groups"] } },
 			dataType: 'json'
 		}).pipe(function (data) {
 			return data;
@@ -62,7 +62,6 @@ var CONNECT = (function () {
 	}
 	
 	// ------------------- ./ GRUPPER -------------------
-
 
 
 	// Tilgjengelige kall
