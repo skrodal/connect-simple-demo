@@ -34,7 +34,8 @@
 			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/',
 		 }, 
 		 links : {
-			 source	: 'https://github.com/skrodal/connect-simple-demo'
+			 client_source	: 'https://github.com/skrodal/connect-simple-demo',
+			 api_source 	: 'https://github.com/skrodal/connect-simons-vitser/',
 		 }
 	 };
 	 
