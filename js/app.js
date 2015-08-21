@@ -19,7 +19,7 @@
 			$('#mainContent').removeClass('hidden');
 		} else {
 			// Vis melding før redirect til Connect consent
-			UTILS.alert("Jeg vet ikke hvem du er!", "Sender deg til Connect for autentisering. Sees snart :-)");
+			UTILS.alert('<i class="ion ion-help-circled"></i> Hvem er du?', "<p>Connect vil nå sjekke din ID, så sees vi snart.</p>");
 		}
 	});
 	
@@ -71,14 +71,14 @@
 		var token = JSON.stringify(CONNECT_AUTH.token(), undefined, 2);
 		// UTILS ligger nederst i denne fila
 		UTILS.alert(
-			'Velkommen!', 
+			'<i class="ion ion-android-boat"></i> Velkommen ombord!', 
 			'<p>Jepp, du er tydeligvis autentisert, for <code>Connect</code> har gitt meg en <code>token</code>:</p>' +
 			'<pre><code class="language-javascript">' + token + '</code></pre>' + 
 			'<p>Alt vel og bra det, men <strong>hva heter du???</strong></p>' +
 			'<p>Det kan du si meg om du klikker på knappen nedenfor. Da kaller vi Connect sitt endepunkt <code>/userinfo</code> som vet mer om deg.</p>' +
 			'<p>Før du klikker; ta en titt over på hvilke <code>scopes</code> jeg har tilgang til. Kan du gjette hva vi får i svar fra <code>/userinfo</code>?</p>' +
 			// MERK: Denne knappen fyrer av et AJAX-kall og blir tatt hånd om i koden umiddelbart nedenfor
-			'<p><button class="btn btn-info btnCallUserInfo" data-dismiss="modal"><i class="ion ion-code-download"></i> /userinfo</button></p>' 
+			'<p><button class="btn btn-info btnCallUserInfo" data-dismiss=""><i class="ion ion-code-download"></i> /userinfo</button></p>' 
 			);
 			
 			// Vis i kodevindu på forsiden
@@ -95,6 +95,7 @@
 	
 	// Når knapp i velkomstvindu ble klikket
 	$('body').on('click', '.btnCallUserInfo', function() {
+		$(this).button('loading');
 		callConnectUserInfo();
 	});
 	
@@ -103,7 +104,7 @@
 		$.when(CONNECT.userinfo()).done(function(userObj){
 			// Svaret er kommet, vis melding:
 			UTILS.alert(
-				'Se der ja ' + userObj.name.split(' ')[0].toUpperCase() + '!',	// Ta (første) fornavn 
+				'<i class="ion ion-android-person"></i> Se der ja ' + userObj.name.split(' ')[0].toUpperCase() + '!',	// Ta (første) fornavn 
 				'<p>Nå vet jeg litt mer om deg, eller hva <b>' + userObj.name + '</b> :)</p>' +
 				'<div class="text-center"><img class="img-circle fc-user-image"></div>' +
 				'<p>Endepunktet <code>/userinfo</code> sendte med følgende: </p>' +
@@ -120,7 +121,7 @@
 				'For noen klienter er det sikkert mer enn nok.</p>' +
 				'<p>...men du? Hva med tilhørighet? Hvor kommer du fra og sånn? La oss prøve å kalle et annet innebygd ("core") Connect-endepunkt: <code>/groups/me/groups</code>:</p>' +
 				// MERK: Denne knappen fyrer av et AJAX-kall
-				'<p><button class="btn btn-info btnCallUserGroups" data-dismiss="modal"><i class="ion ion-code-download"></i> /groups/me/groups</button></p>' 
+				'<p><button class="btn btn-info btnCallUserGroups" data-dismiss=""><i class="ion ion-code-download"></i> /groups/me/groups</button></p>' 
 			);
 			// Dump svaret i konsollen også
 			console.log('Her er svaret fra ' + CONNECT_AUTH.config().fc_endpoints.userinfo + ':');
@@ -132,6 +133,8 @@
 	
 	// Oppdater alle userinfo-felter i HTML (alle steder i kode med kommentar <!-- USERINFO -->)
 	function updateUserInfoUI(userObj){
+		// Gjør knappen klikkbar igjen
+		$('.btnCallUserInfo').button('reset');
 		$('.fc-user-first-name').text(userObj.name.split(' ')[0]);
 		$('.fc-user-full-name').text(userObj.name);
 		$('.fc-user-image').attr('src', CONNECT_AUTH.config().fc_endpoints.photo + userObj.profilephoto);
@@ -153,22 +156,28 @@
 	
 	// Når knapp for /groups klikkes
 	$('body').on('click', '.btnCallUserGroups', function() {
+		$(this).button('loading');
 		callUserGroups();
 	});
 
 	function callUserGroups(){
 		// Kall userinfo og vent på svar:
 		$.when(CONNECT.groups()).done(function(groupsArr){
+			// Reset
+			$('.fc-group-list').empty();
 			// Svaret er kommet, finn navn på alle gruppene:
 			var groups = '<ul>';
 				$.each(groupsArr, function (index, groupObj){
+					$('.fc-group-list').append('<small><span class="text-muted">' + groupObj.displayName + '</span><small><br>');
 					groups += '<li><code>' + groupObj.displayName + '</code></li>';
 				});
 			groups += '</ul>';
 			
+			$('.fc-group-count').html('<span class="badge bg-aqua">'+groupsArr.length+'</span> grupper');
+			
 			// Vis meldingsboksen
 			UTILS.alert(
-				'Connect har levert varene!',	 
+				'<i class="ion ion-android-people"></i> Connect har levert varene!',	 
 				'<p>...nå vet jeg hvilke grupper du tilhører: ' + groups + '</p>' +
 				'<p>Om du studerer svaret nedenfor ser du at vi, gjennom grupper, kan hente ut massevis av informasjon om deg, ' +
 				'f.eks. hvor du hører til, om du er ansatt eller student, osv. Hvilke muligheter for bruk i f.eks. tilgangsstyring!</p>' +
@@ -186,6 +195,8 @@
 	}
 	
 	function updateGroupsUI(groupsArr){
+		// Gjør knappen klikkbar igjen
+		$('.btnCallUserGroups').button('reset');
 		// Vis i kodevindu på forsiden
 		$('.fc-groups-dump').text(JSON.stringify(groupsArr, undefined, 2));
 		// ...og gjør kodestyling mer fancy
@@ -202,7 +213,7 @@
 		
 		
 	$('.btnGetJoke').on('click', function() {
-		var $btn = $(this).button('loading')
+		var $btn = $(this).button('loading');
         
 		// Se jokes.js for kode
 		$.when(JOKES.random()).done(function(joke){
@@ -217,7 +228,7 @@
 	
 	// Når en 'logg ut' lenke/knapp blir trykket
 	$('body').on('click', '.fc-logout', function() {
-		UTILS.alert('Logger ut', '<p>Ha det bra - kom snart igjen :)</p>');
+		UTILS.alert('<i class="ion ion-log-out"></i> Logger ut', '<p>Ha det bra - kom snart igjen :)</p>');
 		CONNECT_AUTH.logout();	
 	});
 	
@@ -234,18 +245,25 @@ var UTILS = (function () {
 	// En info-boks som vises ved behov
 	// Du finner #alertModal som en skjult <div> i index.html. 
 	function alert(title, msg){
-		$('#alertModal').find('.modal-title').text(title);	// Tittel
+		$('#alertModal').find('.modal-title').html(title);	// Tittel
 		$('#alertModal').find('.modal-body').html(msg);		// Melding
 		$('#alertModal').modal('show');						// Vis!
 	}
 	
-	
+	function image(title, src){
+		$('#imageModal').find('.modal-title').html('<i class="ion ion-image"></i> ' + title);	// Tittel
+		$('#imageModal').find('.modal-img').attr('src', src);									// Bilde
+		$('#imageModal').modal('show');															// Vis!
+	}
 	
 	// Tilgjengelige kall
 	// Eks: UTILS.alert('Tittel', '<p>Meldingstekst</p>') 
 	return {
 		alert: function(title, msg) {
 			alert(title, msg);
+		},
+		image: function(title, src) {
+			image(title, src);
 		}
 	}
 
