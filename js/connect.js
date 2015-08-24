@@ -73,6 +73,6 @@ var CONNECT = (function () {
 		groups: function(){
 			return getUserGroupsXHR();
 		}
-	}
+	};
 
 })();
