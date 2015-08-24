@@ -19,7 +19,7 @@
 			providerID		: 	"HVA SOM HELST",	// Valgfritt
 			client_id		:	"MÅ FYLLES INN",	// Klient-spesifikk, satt i DASHBOARD
 			redirect_uri	: 	"MÅ FYLLES INN",	// Klient-spesifikk, settes i DASHBOARD
-			authorization	: 	"https://auth.feideconnect.no/oauth/authorization",		// Alltid samme
+			authorization	: 	"https://auth.feideconnect.no/oauth/authorization"		// Alltid samme
 		 },
 		 fc_endpoints :	{
 			// For tilgang må klienten ha bedt om dette scopet i Dashboard
@@ -27,15 +27,15 @@
 			// Base-URL for bildefil 		
 			photo: 		"https://auth.feideconnect.no/user/media/",					
 			// BrukerID, navn og profilbilde. For mer info (eks. epost, Feide-ting) må scopes etterspørres i Dashboard.
-			userinfo: 	"https://auth.feideconnect.no/userinfo",
+			userinfo: 	"https://auth.feideconnect.no/userinfo"
 		 }, 
 		 api_endpoints : {
 			// Andre 3.parts-APIer klienten har tilgang til via Connect (DASHBOARD) 
-			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/',
+			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/'
 		 }, 
 		 links : {
 			 client_source	: 'https://github.com/skrodal/connect-simple-demo',
-			 api_source 	: 'https://github.com/skrodal/connect-simons-vitser/',
+			 api_source 	: 'https://github.com/skrodal/connect-simons-vitser/'
 		 }
 	 };
 	 
@@ -74,6 +74,6 @@
 		config : function (){
 			return CONFIG;
 		}
-	}
+	};
 
 })();
