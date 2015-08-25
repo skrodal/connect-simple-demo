@@ -17,9 +17,6 @@
 			updateUI();
 			// Vis sideinnhold
 			$('#mainContent').removeClass('hidden');
-		} else {
-			// Vis melding før redirect til Connect consent
-			UTILS.alert('<i class="ion ion-help-circled"></i> Hvem er du?', "<p>Connect vil nå sjekke din ID, så sees vi snart.</p>");
 		}
 	});
 	
