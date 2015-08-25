@@ -31,7 +31,7 @@
 		 }, 
 		 api_endpoints : {
 			// Andre 3.parts-APIer klienten har tilgang til via Connect (DASHBOARD) 
-			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/'
+			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect-simons-vitser/'
 		 }, 
 		 links : {
 			 client_source	: 'https://github.com/skrodal/connect-simple-demo',
