@@ -131,7 +131,7 @@
 
 
 
-
+          <h2 class="page-header text-muted">Bakgrunn / jomfrutur</h2>
 
 
           <!------------------------------------------------ INTRO ------------------------------------------------> 
@@ -265,10 +265,105 @@
           
           <h2 class="page-header text-muted">En mer detaljert gjennomgang</h2>
           
-          <!------------------------------------------------ DETALJER ------------------------------------------------>          
+          <!--------------------------------------------------------------- GRUPPER -------------------------------------------------------------->  
           <div class="row">
             <div class="col-lg-12">
               <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="ion ion-android-people"></i> Grupper</h3>
+                </div>  
+                <div class="box-body">
+                  <p>
+                    I jomfruturen sendte vi et kall til endepunktet <code>/groups/me/groups</code> for å finne ut hvilke grupper du tilhører. 
+                    Om du hoppet over det steget, eller bare er veldig glemsk, så kan du kjøre det kallet igjen nå:
+                  </p>
+                  
+                  <p>
+                    <button class="btn bg-maroon btn-sm btnCallUserGroups"><i class="ion ion-android-people"></i> <code>/groups/me/groups</code></button> 
+                  </p>
+                  
+                  <p>
+                    Grupper gir klienter en unik mulighet til å sette kontekst for en autentisert bruker; for deling, tilgangskontroll, kommunikasjon, m.m.
+                    Og siden gruppene er tilgjengelige på tvers av tjenester (som bruker <code>Connect</code>) slipper <em>du</em> å kaste bort tid med 
+                    gruppehåndtering i dine klienter - herlig :) 
+                  </p>
+                  
+                  <p>
+                    Du kan lese i mer detalj om hvilke gruppe-typer Connect opererer med på <a href="http://feideconnect.no/docs/grouptypes/" target="_blank">feideconnect.no</a>, 
+                    men kort fortalt eksisterer i skrivende stund disse typene:
+                  </p>
+                  
+                  <ul>
+                    <li>UNINETT Connect Organisasjon</li>
+                    <li>Organisasjonadministratorgruppe</li>
+                    <li>Kull</li>
+                    <li>Klasse</li>
+                    <li>Studieprogram</li>
+                    <li>Studieretning (kommer)</li>
+                    <li>Emne</li>
+                    <li>Ad-hoc</li>
+                  </ul>
+                  
+                  <p>
+                    Det jeg tenkte vi kunne gjøre <em>her og nå</em> er å se litt mer på Connect sine <code>ad-hoc</code> grupper. Som navnet hinter til, så er dette grupper som 
+                    kan opprettes ved behov. Connect tilbyr faktisk en egen tjeneste som lar deg gjøre akkurat dette: <a href="https://groups.feideconnect.no" target="_blank">groups.feideconnect.no</a>, 
+                    a.k.a. <code>Mine Grupper</code>. 
+                  </p>
+                  
+                  <p>
+                    I Mine Grupper kan du se hvilke grupper du er medlem i (<code>/groups/me/groups</code>, ikke sant?) samt administrere/opprette nye (<code>ad-hoc</code>) grupper og 
+                    medlemmer i disse.
+                  </p>
+                  
+                  <p>
+                    La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Connect VIP</strong></code> og 
+                    gruppe-ID, som jeg fant i Mine Grupper, er <code>eb965211-ebdf-41cd-a621-fe355f7e852b</code>. Jeg fikk også ei invitasjonslenke som du kan stikke 
+                    innom nå, så ser vi hva som skjer:      
+                  </p>
+                  
+                  <p>
+                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
+                      Klikk for å godta invitasjonen til gruppe <code>Connect VIP</code>
+                    </a>
+                  </p>
+                  
+                  <p>
+                    Endepunkt for å spørre om gruppemedlemmer er <code>/groups/{groupid}/members</code>. Skal vi bypasse Mine Grupper og ta en titt via endepunktet for å finne 
+                    medlemmene?
+                  </p>
+                  
+                  <p>
+                    <!-- Se: rute til groups endepunkt ligger i data-attributten -->
+                    <button class="btn bg-maroon btn-sm btnCallGroupQuery" data-group-query="groups/eb965211-ebdf-41cd-a621-fe355f7e852b/members"><i class="ion ion-android-people"></i> <code>/groups/eb965211-ebdf-41cd-a621-fe355f7e852b/members</code></button>
+                  </p>
+                  
+                  <p>
+                    Mye kule folk in den gruppa altså! Om du godtok invitasjonen, kan vi jo sjekke igjen med <code>/groups/me/groups</code> og se om Connect har fått med seg at du nå er
+                    stolt medlem av ei ny gruppe:
+                  </p>
+                  
+                  <p>
+                    <button class="btn bg-maroon btn-sm btnCallUserGroups"><i class="ion ion-android-people"></i> <code>/groups/me/groups</code></button> 
+                  </p>
+                 
+                </div><!--./body-->
+                <!-- Footer -->
+                <div class="box-footer text-muted">
+                  <p>
+                    Mer om grupper på <a href="http://feideconnect.no/docs/groups/" target="_blank">feideconnect.no</a>
+                  </p>
+                </div>
+                
+              </div><!--./box-->
+            </div> <!--./col-->
+          </div> <!--./row-->
+          <!--------------------------------------------------------------- ./GRUPPER -------------------------------------------------------------->
+          
+          
+          <!------------------------------------------------ Klienter og API Gatekeepere ------------------------------------------------>          
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="ion ion-code-working"></i> Klienter og API Gatekeepere</h3>
                 </div>  
@@ -352,7 +447,7 @@
               </div><!--./box-->
             </div> <!--./col-->
           </div> <!--./row-->
-          <!------------------------------------------------ ./DETALJER (Moduler lenger ned) ------------------------------------------------>
+          <!-------------------------------- ./Klienter og API Gatekeepere (Moduler brukt i denne seksjonen lenger ned) ------------------------------->
           
           
           <div class="row">

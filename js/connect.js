@@ -47,7 +47,7 @@ var CONNECT = (function () {
 	// ------------------- GRUPPER -------------------
 	function getUserGroupsXHR() {
 		return CONNECT_AUTH.jso().ajax({
-			url: CONNECT_AUTH.config().fc_endpoints.groups,
+			url: CONNECT_AUTH.config().fc_endpoints.groups + 'me/groups',
 			dataType: 'json'
 		}).pipe(function (data) {
 			return data;
@@ -55,11 +55,27 @@ var CONNECT = (function () {
 			UTILS.alert(
 				"Connect /groups/me/groups", 
 				"<p>En feil oppstod i samtale med Connect's endepunkt <code>/groups/me/groups</code>.</p>" + 
-				"<p>Kan du gjette hva problemet er? ;)</p>" +
-				"<p class='text-muted'>(Svar: Klienten har ikke bedt om tilgang til scope <code>groups</code> i Connect Dashboard)</p>"
+				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Connect Dashboard?)</p>"
 				);
 		});	
 	}
+	
+	function getGroupQuery(query) {
+		return CONNECT_AUTH.jso().ajax({
+			url: CONNECT_AUTH.config().fc_endpoints.groups + query,
+			dataType: 'json'
+		}).pipe(function (data) {
+			return data;
+		}).fail(function (jqXHR, textStatus, error) {
+			UTILS.alert(
+				"Connect /groups/" + query, 
+				"<p>En feil oppstod i samtale med Connect's endepunkt <code>/groups/"+query+"</code>.</p>" + 
+				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Connect Dashboard?)</p>"
+				);
+		});	
+	}
+	
+	
 	
 	// ------------------- ./ GRUPPER -------------------
 
@@ -67,11 +83,17 @@ var CONNECT = (function () {
 	// Tilgjengelige kall
 	// Eks: CONNECT.userinfo() for å kalle /userinfo endepunkt
 	return {
+		//
 		userinfo: function() {
 			return getUserInfoXHR();
 		}, 
+		// Snarvei for grupper tilgørende pålogget bruker
 		groups: function(){
 			return getUserGroupsXHR();
+		}, 
+		// Se http://feideconnect.no/docs/groups/ for alle ruter 
+		groupQuery: function(query) {
+			return getGroupQuery(query);
 		}
 	};
 

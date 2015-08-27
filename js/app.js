@@ -200,6 +200,23 @@
 		Prism.highlightAll();
 	}
 	
+	
+	
+	// 
+	$('body').on('click', '.btnCallGroupQuery', function() {
+		var query = $(this).attr('data-group-query');
+		console.log(query);
+		callGroupQuery(query);
+	});
+	
+	function callGroupQuery(query) {
+		$.when(CONNECT.groupQuery(query)).done(function(data){
+			console.log(data);
+		});
+	}
+	
+	
+	
 
 
 	// ---------------------- ./GROUPS ----------------------------------------------------------------------

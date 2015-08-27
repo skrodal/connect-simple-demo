@@ -23,7 +23,7 @@
 		 },
 		 fc_endpoints :	{
 			// For tilgang må klienten ha bedt om dette scopet i Dashboard
-			groups: 	"https://groups-api.feideconnect.no/groups/me/groups",		
+			groups: 	"https://groups-api.feideconnect.no/groups/",		
 			// Base-URL for bildefil 		
 			photo: 		"https://auth.feideconnect.no/user/media/",					
 			// BrukerID, navn og profilbilde. For mer info (eks. epost, Feide-ting) må scopes etterspørres i Dashboard.
