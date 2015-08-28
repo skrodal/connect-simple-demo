@@ -316,30 +316,30 @@
                   </p>
                   
                   <p>
-                    La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Connect VIP</strong></code> og 
-                    gruppe-ID, som jeg fant i Mine Grupper, er <code>eb965211-ebdf-41cd-a621-fe355f7e852b</code>. Jeg fikk også ei invitasjonslenke som du kan stikke 
-                    innom nå, så ser vi hva som skjer:      
+                    La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Connect VIP</strong></code> 
+                    - <em>En ad-hoc gruppe for alle Connect-entusiaster</em>. Gruppe-ID, som jeg fant i Mine Grupper, er <code>eb965211-ebdf-41cd-a621-fe355f7e852b</code>.       
                   </p>
                   
                   <p>
-                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
-                      Klikk for å godta invitasjonen til gruppe <code>Connect VIP</code>
-                    </a>
-                  </p>
-                  
-                  <p>
-                    Endepunkt for å spørre om gruppemedlemmer er <code>/groups/{groupid}/members</code>. Skal vi bypasse Mine Grupper og ta en titt via endepunktet for å finne 
-                    medlemmene?
+                    API-endepunkt for å spørre om gruppemedlemmer er <code>/groups/fc:adhoc:{groupid}/members</code>, så la oss bypasse Mine Grupper sitt GUI og heller bruke gruppe-APIet 
+                    for å finne medlemmene:
                   </p>
                   
                   <p>
                     <!-- Se: rute til groups endepunkt ligger i data-attributten -->
-                    <button class="btn bg-maroon btn-sm btnCallGroupQuery" data-group-query="groups/eb965211-ebdf-41cd-a621-fe355f7e852b/members"><i class="ion ion-android-people"></i> <code>/groups/eb965211-ebdf-41cd-a621-fe355f7e852b/members</code></button>
+                    <button class="btn bg-maroon btn-sm btnCallGroupQuery" data-group-query="groups/fc:adhoc:eb965211-ebdf-41cd-a621-fe355f7e852b/members"><i class="ion ion-android-people"></i> <code>/groups/fc:adhoc:eb965211-ebdf-41cd-a621-fe355f7e852b/members</code></button>
                   </p>
                   
                   <p>
-                    Mye kule folk in den gruppa altså! Om du godtok invitasjonen, kan vi jo sjekke igjen med <code>/groups/me/groups</code> og se om Connect har fått med seg at du nå er
-                    stolt medlem av ei ny gruppe:
+                    Mye kule folk in den gruppa altså! Lyst til å bli en av de? I Mine Grupper fikk jeg også ei invitasjonslenke som du kan stikke innom nå, så ser vi hva som skjer. 
+                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
+                      Gå til invitasjonen for gruppe <code>Connect VIP</code>.
+                    </a>
+                  </p>
+                                    
+                  <p>
+                    Om du godtok invitasjonen, kan vi jo sjekke igjen med <code>/groups/me/groups</code> og se om Connect har fått med seg at du nå er
+                    stolt medlem av den nye gruppa:
                   </p>
                   
                   <p>

@@ -202,16 +202,22 @@
 	
 	
 	
-	// 
+	// API-endepunktet er lagt inn i HTML data attributt
 	$('body').on('click', '.btnCallGroupQuery', function() {
 		var query = $(this).attr('data-group-query');
-		console.log(query);
 		callGroupQuery(query);
 	});
 	
 	function callGroupQuery(query) {
 		$.when(CONNECT.groupQuery(query)).done(function(data){
-			console.log(data);
+			var groupMembers = '<ul>';
+			$.each(data, function(index, groupMember){
+				console.log(index);
+				console.log(groupMember.name);
+				groupMembers += '<li>' + groupMember.name + '</li>';
+			});
+			groupMembers += '</ul>';
+			UTILS.alert(query, groupMembers);
 		});
 	}
 	
