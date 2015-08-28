@@ -325,12 +325,22 @@
                   
                   <p>
                     La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Connect VIP</strong></code> 
-                    - <em>En ad-hoc gruppe for alle Connect-entusiaster</em>. Gruppe-ID, som jeg fant i Mine Grupper, er <code>eb965211-ebdf-41cd-a621-fe355f7e852b</code>.       
+                    - <em>En ad-hoc gruppe for alle Connect-entusiaster</em>.       
                   </p>
                   
                   <p>
-                    API-endepunkt for å spørre om gruppemedlemmer er <code>/groups/fc:adhoc:{groupid}/members</code>, så la oss bypasse Mine Grupper sitt GUI og heller bruke gruppe-APIet 
-                    for å finne medlemmene:
+                    Det er kule folk in den gruppa altså! Lyst til å bli en av de? I Mine Grupper fikk jeg nemlig også ei invitasjonslenke som du kan stikke innom nå, så ser vi hva som skjer: 
+                  </p>
+                  
+                  <p>
+                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
+                      Gå til invitasjonen for gruppe <code>Connect VIP</code>.
+                    </a>
+                  </p>
+                                    
+                  <p>
+                    API-endepunkt for å spørre om gruppemedlemmer er <code>/groups/fc:adhoc:{groupid}/members</code>. Gruppe-ID, som jeg fant i Mine Grupper, er <code>eb965211-ebdf-41cd-a621-fe355f7e852b</code>. 
+                    Så, om du godtok invitasjonen, la oss bypasse Mine Grupper sitt GUI og heller bruke gruppe-APIet for å sjekke hvem som er medlemmer av gruppa:
                   </p>
                   
                   <p>
@@ -339,17 +349,8 @@
                   </p>
                   
                   <p>
-                    Mye kule folk in den gruppa altså! Lyst til å bli en av de? I Mine Grupper fikk jeg også ei invitasjonslenke som du kan stikke innom nå, så ser vi hva som skjer. 
-                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
-                      Gå til invitasjonen for gruppe <code>Connect VIP</code>.
-                    </a>
+                    ...og så kan vi sjekke at gruppa dukker opp i dine grupper med <code>/groups/me/groups</code>:
                   </p>
-                                    
-                  <p>
-                    Om du godtok invitasjonen, kan vi jo sjekke igjen med <code>/groups/me/groups</code> og se om Connect har fått med seg at du nå er
-                    stolt medlem av den nye gruppa:
-                  </p>
-                  
                   <p>
                     <button class="btn bg-maroon btn-sm btnCallUserGroups"><i class="ion ion-android-people"></i> <code>/groups/me/groups</code></button> 
                   </p>
