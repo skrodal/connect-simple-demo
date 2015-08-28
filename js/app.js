@@ -184,7 +184,7 @@
 				'scroller videre nedover siden for mer detaljer.</p>' 
 			);
 			// Dump svaret i konsollen også
-			console.log('Her er svaret fra ' + CONNECT_AUTH.config().fc_endpoints.groups + ':');
+			console.log('Her er svaret fra ' + CONNECT_AUTH.config().fc_endpoints.groups + 'me/groups:');
 			console.log(groupsArr);
 			// Og oppdater grensesnittet
 			updateGroupsUI(groupsArr);
@@ -210,10 +210,11 @@
 	
 	function callGroupQuery(query) {
 		$.when(CONNECT.groupQuery(query)).done(function(data){
+			console.log('Her er svaret fra ' + CONNECT_AUTH.config().fc_endpoints.groups +  query + ':');
+			console.log(data);
+			
 			var groupMembers = '<ul>';
 			$.each(data, function(index, groupMember){
-				console.log(index);
-				console.log(groupMember.name);
 				groupMembers += '<li>' + groupMember.name + '</li>';
 			});
 			groupMembers += '</ul>';
