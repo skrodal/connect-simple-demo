@@ -45,6 +45,9 @@
 		// Kildekode for vitse-API på GitHub
 		$('a.api-github-source').attr('href', CONNECT_AUTH.config().links.api_source);
 		$('.api-github-source:not(a)').text(CONNECT_AUTH.config().links.api_source);
+		//
+		$('.fc-user-first-name').text('Pålogget');
+		
 	}
 	
 
