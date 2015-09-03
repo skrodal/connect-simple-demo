@@ -12,3 +12,5 @@ For å sette opp denne klienten på egen webtjener, gjerne localhost, gjør som 
 4. Fyll inn inn config: providerID, client_id, redirect_uri i connect_auth.js 
  
 * Med referanser til DASHBOARD menes https://dashboard.feideconnect.no.
+
+![Preview](/images/UNINETT_Connect_Demo.png)
