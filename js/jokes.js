@@ -26,7 +26,7 @@ var JOKES = (function () {
 		}).pipe(function (data) {
 			console.log("Rådata fra Simon's Vitser API: ");
 			console.log(data);
-			return data.vits;	// Vi er interesserte i vitsen, så vi piper den i XHR-svaret tilbake.
+			return data;
 		}).fail(function (jqXHR, textStatus, error) {
 			UTILS.alert(
 				"Simon's Vitser", 

@@ -240,8 +240,8 @@
 		var $btn = $(this).button('loading');
         
 		// Se jokes.js for kode
-		$.when(JOKES.random()).done(function(joke){
-			$('#jokeContainer').text(joke);
+		$.when(JOKES.random()).done(function(data){
+			$('#jokeContainer').html(data.vits + ' <small>Scope ' + data.scope + '</small>');
 			$btn.button('reset');
 		});
 	});	
