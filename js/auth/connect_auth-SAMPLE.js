@@ -16,7 +16,7 @@
 	 var CONFIG = 
 	 {
 		 fc_auth : {
-			providerID		: 	"HVA SOM HELST",	// Valgfritt
+			providerID		: 	"FC-connect-simple-demo",	// Valgfritt
 			client_id		:	"MÅ FYLLES INN",	// Klient-spesifikk, satt i DASHBOARD
 			redirect_uri	: 	"MÅ FYLLES INN",	// Klient-spesifikk, settes i DASHBOARD
 			authorization	: 	"https://auth.feideconnect.no/oauth/authorization"		// Alltid samme
