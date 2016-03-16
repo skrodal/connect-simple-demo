@@ -1,6 +1,6 @@
 /**
  * Denne fila tar seg av oppdatering av brukergrensesnitt, 
- * knappetrykk, kall til funksjoner defindert i connect.js, etc. 
+ * knappetrykk, kall til funksjoner definert i dataporten.js, etc. 
  *
  * @author Simon Skrødal
  * @since August 2015
@@ -9,7 +9,7 @@
 
 	// Når hele dokumentet er lastet
 	$( document ).ready(function() {
-		//  ...HVIS vi har en Connect token
+		//  ...HVIS vi har en Dataporten token
 		if(CONNECT_AUTH.token()){
 			// Vis modal med velkomstinfo. Kommenter ut om den blir for irriterende.
 			showWelcomeMessage();
@@ -28,7 +28,7 @@
 	 * Når bruker er autentisert kan vi oppdatere UIet littegrann.
 	 */
 	function updateUI(){
-		// Synliggjør config variabler fra /js/auth/connect_auth.js
+		// Synliggjør config variabler fra /js/auth/dataporten_auth.js
 		$('.fc-auth-uri').text(CONNECT_AUTH.config().fc_auth.authorization);
 		$('.fc-userinfo-uri').text(CONNECT_AUTH.config().fc_endpoints.userinfo);
 		$('.fc-groups-uri').text(CONNECT_AUTH.config().fc_endpoints.groups);
@@ -72,10 +72,10 @@
 		// UTILS ligger nederst i denne fila
 		UTILS.alert(
 			'<i class="ion ion-android-boat"></i> Velkommen ombord!', 
-			'<p>Jepp, du er tydeligvis autentisert, for <code>Connect</code> har gitt meg en <code>token</code>:</p>' +
+			'<p>Jepp, du er tydeligvis autentisert, for <code>Dataporten</code> har gitt meg en <code>token</code>:</p>' +
 			'<pre><code class="language-javascript">' + token + '</code></pre>' + 
 			'<p>Alt vel og bra det, men <strong>hva heter du???</strong></p>' +
-			'<p>Det kan du si meg om du klikker på knappen nedenfor. Da kaller vi Connect sitt endepunkt <code>/userinfo</code> som vet mer om deg.</p>' +
+			'<p>Det kan du si meg om du klikker på knappen nedenfor. Da kaller vi Dataporten sitt endepunkt <code>/userinfo</code> som vet mer om deg.</p>' +
 			'<p>Før du klikker; ta en titt over på hvilke <code>scopes</code> jeg har tilgang til. Kan du gjette hva vi får i svar fra <code>/userinfo</code>?</p>' +
 			// MERK: Denne knappen fyrer av et AJAX-kall og blir tatt hånd om i koden umiddelbart nedenfor
 			'<p><button class="btn btn-info btnCallUserInfo" data-dismiss=""><i class="ion ion-code-download"></i> /userinfo</button></p>' 
@@ -109,17 +109,17 @@
 				'<div class="text-center"><img class="img-circle fc-user-image"></div>' +
 				'<p>Endepunktet <code>/userinfo</code> sendte med følgende: </p>' +
 				'<pre><code class="language-javascript">' + JSON.stringify(userObj, undefined, 2) + '</code></pre>' +
-				'<p><code>userid</code> er din <strong>unike</strong> og <strong>persistente</strong> ID i Connect-verdenen; ' + 
+				'<p><code>userid</code> er din <strong>unike</strong> og <strong>persistente</strong> ID i Dataporten-verdenen; ' + 
 				'et slags personnummer som kan brukes for å identifisere deg og bare deg.</p>' +  
-				'<p>Følgende info fulgte med bare fordi, som jeg nevnte tidligere, jeg fortalte <code>Connect</code> at jeg vil ha tilgang til disse <code>scopes</code>:</p>' +
+				'<p>Følgende info fulgte med bare fordi, som jeg nevnte tidligere, jeg fortalte <code>Dataporten</code> at jeg vil ha tilgang til disse <code>scopes</code>:</p>' +
 				'<ul>' +
 					'<li>bilde (<code>userinfo-photo</code>)</li>' +
 					'<li>epostadresse (<code>userinfo-mail</code>)</li>' +
 					'<li>Feide brukernavn (<code>userinfo-feide</code>)</li>' +
 				'</ul>' +
-				'<p>Hadde jeg ikke fortalt <code>Connect</code> eksplisitt om tilgang til scopene over ville <code>/userinfo</code> gitt oss kun <code>userid</code> og <code>name</code>. ' + 
+				'<p>Hadde jeg ikke fortalt <code>Dataporten</code> eksplisitt om tilgang til scopene over ville <code>/userinfo</code> gitt oss kun <code>userid</code> og <code>name</code>. ' + 
 				'For noen klienter er det sikkert mer enn nok.</p>' +
-				'<p>...men du? Hva med tilhørighet? Hvor kommer du fra og sånn? La oss prøve å kalle et annet innebygd ("core") Connect-endepunkt: <code>/groups/me/groups</code>:</p>' +
+				'<p>...men du? Hva med tilhørighet? Hvor kommer du fra og sånn? La oss prøve å kalle et annet innebygd ("core") Dataporten-endepunkt: <code>/groups/me/groups</code>:</p>' +
 				// MERK: Denne knappen fyrer av et AJAX-kall
 				'<p><button class="btn btn-info btnCallUserGroups" data-dismiss=""><i class="ion ion-code-download"></i> /groups/me/groups</button></p>' 
 			);
@@ -177,7 +177,7 @@
 			
 			// Vis meldingsboksen
 			UTILS.alert(
-				'<i class="ion ion-android-people"></i> Connect har levert varene!',	 
+				'<i class="ion ion-android-people"></i> Dataporten har levert varene!',	 
 				'<p>...nå vet jeg hvilke grupper du tilhører: ' + groups + '</p>' +
 				'<p>Om du studerer svaret nedenfor ser du at vi, gjennom grupper, kan hente ut massevis av informasjon om deg, ' +
 				'f.eks. hvor du hører til, om du er ansatt eller student, osv. Hvilke muligheter for bruk i f.eks. tilgangsstyring!</p>' +

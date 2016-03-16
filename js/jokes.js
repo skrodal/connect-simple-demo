@@ -1,9 +1,9 @@
 /**
- * Alle kall til 3.parts-API 'Simon's Vitser, via Connect Gatekeeper er definert her.
+ * Alle kall til 3.parts-API 'Simon's Vitser, via Dataporten Gatekeeper er definert her.
  * 
- * Tilgang til dette APIet må allerede være etablert i Connect Dashboard for at dette skal virke.
+ * Tilgang til dette APIet må allerede være etablert i Dataporten Dashboard for at dette skal virke.
  * 
- * Se kommentarer connect.js for mer info om hvordan vi gjør AJAX-kall med JSO. 
+ * Se kommentarer dataporten.js for mer info om hvordan vi gjør AJAX-kall med JSO. 
  *
  * @author Simon Skrødal
  * @since August 2015
