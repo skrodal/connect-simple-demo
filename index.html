@@ -1,8 +1,8 @@
 <!doctype html>
 
 <!-- 
-	Tittel: Connect Enkel Demo
-	Beskrivelse: En særdeles enkel demo av UNINETTs tjenesteplattform Connect.
+	Tittel: Dataporten Enkel Demo
+	Beskrivelse: En særdeles enkel demo av UNINETTs tjenesteplattform Dataporten.
 	Se: https://www.uninett.no/tjenester/tjenesteplattform
 	
   @author Simon Skrødal
@@ -15,12 +15,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>UNINETT Connect Demo</title>
+    <title>UNINETT Dataporten Demo</title>
     
-    <!-- JSO av Andreas Åkre Solberg: http://oauth.no/jso/ :: Dette er modulen som tar seg av OAuth med Connect -->
+    <!-- JSO av Andreas Åkre Solberg: http://oauth.no/jso/ :: Dette er modulen som tar seg av OAuth med Dataporten -->
     <script type="text/javascript" src="js/auth/jso.js"></script>
     <!-- Konfigurering og bittelitt kode for å sparke igang JSO autentiseringsflyt -->
-    <script type="text/javascript" src="js/auth/connect_auth.js"></script>
+    <script type="text/javascript" src="js/auth/dataporten_auth.js"></script>
      <!-- Bootstrap -->
      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
      <!-- Ikoner -->
@@ -42,7 +42,7 @@
         </a>
 
         <nav class="navbar navbar-static-top" role="navigation">
-          <span class="navbar-title">CONNECT Demo</span>
+          <span class="navbar-title">Dataporten Demo</span>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="dropdown user user-menu">
@@ -80,7 +80,7 @@
           <div class="jumbotron clearfix">
             <div class="container">
               <h1 class="text-nowrap"><i class="ion ion-star text-yellow"></i> Hei <span class="fc-user-first-name">du<!-- USERINFO --></span>!</h1>
-              <p class="text-muted">- og velkommen til en liten UNINETT Connect demonstrasjon [<i class="ion ion-social-html5 text-red"></i> <i class="ion ion-social-javascript text-aqua"></i>]</p>
+              <p class="text-muted">- og velkommen til en liten demonstrasjon av UNINETT Dataporten [<i class="ion ion-social-html5 text-red"></i> <i class="ion ion-social-javascript text-aqua"></i>]</p>
               <small class="text-muted">Om du vil kjøre meg på din egen server kan du <a href="" class="client-github-source" target="_blank">laste meg ned på GitHub</a></small>
             </div>
             
@@ -109,13 +109,13 @@
                   </p>
                   
                   <p>
-                    Jeg er interaktiv og full av eksempler, informasjon og pekere som kan være nyttig for å lære om Connect for første 
+                    Jeg er interaktiv og full av eksempler, informasjon og pekere som kan være nyttig for å lære om Dataporten for første 
                     gang eller bruke som referansepunkt lenger ned i løypa. 
                   </p>
                   
                   <p>
                     Om du vil kjøre meg på din egen server kan du <a href="" class="client-github-source" target="_blank">laste meg ned på GitHub</a> 
-                    og registrere meg på nytt i <code>Connect</code> som din egen klient. Les videre så skal jeg vise deg hvordan du gjør det.
+                    og registrere meg på nytt i <code>Dataporten</code> som din egen klient. Les videre så skal jeg vise deg hvordan du gjør det.
                   </p>
                   
                   <p>
@@ -153,28 +153,28 @@
                 <div class="box-body">
                   <p>Da du kom for å besøke meg, ante jeg ikke hvem du var.</p>
                   <p>
-                    <code>Connect</code> kjenner imidlertid <em>meg</em> og derfor sendte jeg deg aller først til henne med følgende informasjon (se kildekode i <code>connect_auth.js</code>):
+                    <code>Dataporten</code> kjenner imidlertid <em>meg</em> og derfor sendte jeg deg aller først til henne med følgende informasjon (se kildekode i <code>dataporten_auth.js</code>):
                   </p> 
                   
                   <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>
                   
                   <p>
-                    <code>Connect</code> ba deg først om å identifisere deg med en ID som hun kjenner igjen (eks. Feide, IDporten, ...).
+                    <code>Dataporten</code> ba deg først om å identifisere deg med en ID som hun kjenner igjen (eks. Feide, IDporten, ...).
                   </p>
                   
                   <p>
                     Deretter ble du bedt om å godta at jeg også fikk vite litt mer om deg ("consent form") og om du fulgte godt med 
-                    så var hun ganske så spesifikk. Jeg har nemlig snakket med <code>Connect</code> tidligere og fortalt henne akkurat 
-                    hva slags informasjon jeg gjerne vil ha fra de som besøker meg (i <a href="https://dashboard.feideconnect.no" target="_blank">Connect Dashboard</a>), 
-                    <button class="btn bg-orange btn-xs" onclick="UTILS.image('Scopes jeg har bedt om (i <code>Connect Dashboard</code>)', 'images/connect_core_scopes.png');"><i class="ion ion-image"></i> bare se her</button>. 
+                    så var hun ganske så spesifikk. Jeg har nemlig snakket med <code>Dataporten</code> tidligere og fortalt henne akkurat 
+                    hva slags informasjon jeg gjerne vil ha fra de som besøker meg (i <a href="https://dashboard.dataporten.no" target="_blank">Dataporten Dashboard</a>), 
+                    <button class="btn bg-orange btn-xs" onclick="UTILS.image('Scopes jeg har bedt om (i <code>Dataporten Dashboard</code>)', 'images/connect_core_scopes.png');"><i class="ion ion-image"></i> bare se her</button>. 
                   </p>
                   
                   <p>
-                    Da du sa til <code>Connect</code> at det er greit å dele dette med meg, sendte hun deg tilbake hit (til min <code>redirect_uri</code>). 
+                    Da du sa til <code>Dataporten</code> at det er greit å dele dette med meg, sendte hun deg tilbake hit (til min <code>redirect_uri</code>). 
                   </p>
                   
                   <p>
-                    Enn så lenge vet jeg ingenting om deg, men <code>Connect</code> sendte med en <code>token</code> som er knyttet til 
+                    Enn så lenge vet jeg ingenting om deg, men <code>Dataporten</code> sendte med en <code>token</code> som er knyttet til 
                     deg som bruker og meg som klient. Denne kan benyttes for å spørre litt rundt etter informasjon. 
                     Jeg tenkte at dette er noe vi kan gjøre sammen slik at du kan lære litt mer om hva det er som foregår, okei? 
                   </p>
@@ -198,7 +198,7 @@
             <!----------------------------------------- TOKEN/USERINFO/GROUPS ----------------------------------------->
             
             <div class="col-lg-5">
-              <h2 class="page-header text-muted">Rådata fra Connect endepunkter</h2>
+              <h2 class="page-header text-muted">Rådata fra Dataporten endepunkter</h2>
               
               <p class="text-muted">
                 Boksene nedenfor vil vise samme informasjon som du fikk i hvert steg på 
@@ -208,7 +208,7 @@
 
               <div class="box box-info collapsed-box">
                 <div class="box-header with-border">
-                    <h3 class="box-title text-muted"><i class="ion ion-key"></i> Connect Token</h3>
+                    <h3 class="box-title text-muted"><i class="ion ion-key"></i> Dataporten Token</h3>
                     <div class="box-tools pull-right">
                       <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
                     </div>
@@ -222,14 +222,14 @@
                 </div>
                 <div class="box-footer">
                   <p>Endepunkt: <code class="fc-auth-uri"><!-- CONFIG --></code></p>
-                  <p>Docs: <a href="http://feideconnect.no/docs/authorization/" target="_blank">http://feideconnect.no/docs/authorization/</a></p>
+                  <p>Docs: <a href="http://dataporten.no/docs/authorization/" target="_blank">http://dataporten.no/docs/authorization/</a></p>
                   
                 </div>
               </div>
               
               <div class="box box-success collapsed-box">
                 <div class="box-header with-border">
-                    <h3 class="box-title text-muted"><i class="ion ion-android-person"></i> Connect /userinfo</h3>
+                    <h3 class="box-title text-muted"><i class="ion ion-android-person"></i> Dataporten /userinfo</h3>
                     <div class="box-tools pull-right">
                       <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
                     </div>
@@ -243,13 +243,13 @@
                 </div>
                 <div class="box-footer">
                   <p>Endepunkt: <code class="fc-userinfo-uri"><!-- CONFIG --></code></p>
-                  <p>Docs: <a href="http://feideconnect.no/docs/oauth-authentication/" target="_blank">http://feideconnect.no/docs/oauth-authentication/</a></p>
+                  <p>Docs: <a href="http://dataporten.no/docs/oauth-authentication/" target="_blank">http://dataporten.no/docs/oauth-authentication/</a></p>
                 </div>
               </div>
               
               <div class="box box-warning collapsed-box">
                 <div class="box-header with-border">
-                    <h3 class="box-title text-muted"><i class="ion ion-android-people"></i> Connect /groups/me/groups</h3>
+                    <h3 class="box-title text-muted"><i class="ion ion-android-people"></i> Dataporten /groups/me/groups</h3>
                     <div class="box-tools pull-right">
                       <button class="btn btn-box-tool" data-widget="collapse"><i class="ion ion-plus"></i></button>
                     </div>
@@ -263,7 +263,7 @@
                 </div>
                 <div class="box-footer">
                   <p>Endepunkt: <code class="fc-groups-uri"><!-- CONFIG --></code></p>
-                  <p>Docs: <a href="http://feideconnect.no/docs/groups/" target="_blank">http://feideconnect.no/docs/groups/</a></p>
+                  <p>Docs: <a href="http://dataporten.no/docs/groups/" target="_blank">http://dataporten.no/docs/groups/</a></p>
                 </div>
               </div>
             </div>
@@ -292,17 +292,17 @@
                   
                   <p>
                     Grupper gir klienter en unik mulighet til å sette kontekst for en autentisert bruker; for deling, tilgangskontroll, kommunikasjon, m.m.
-                    Og siden gruppene er tilgjengelige på tvers av tjenester (som bruker <code>Connect</code>) slipper <em>du</em> å kaste bort tid med 
+                    Og siden gruppene er tilgjengelige på tvers av tjenester (som bruker <code>Dataporten</code>) slipper <em>du</em> å kaste bort tid med 
                     gruppehåndtering i dine klienter - herlig :) 
                   </p>
                   
                   <p>
-                    Du kan lese i mer detalj om hvilke gruppe-typer Connect opererer med på <a href="http://feideconnect.no/docs/grouptypes/" target="_blank">feideconnect.no</a>, 
+                    Du kan lese i mer detalj om hvilke gruppe-typer Dataporten opererer med på <a href="http://dataporten.no/docs/grouptypes/" target="_blank">dataporten.no</a>, 
                     men kort fortalt eksisterer i skrivende stund disse typene:
                   </p>
                   
                   <ul>
-                    <li>UNINETT Connect Organisasjon</li>
+                    <li>UNINETT Dataporten Organisasjon</li>
                     <li>Organisasjonadministratorgruppe</li>
                     <li>Kull</li>
                     <li>Klasse</li>
@@ -313,8 +313,8 @@
                   </ul>
                   
                   <p>
-                    Det jeg tenkte vi kunne gjøre <em>her og nå</em> er å se litt mer på Connect sine <code>ad-hoc</code> grupper. Som navnet hinter til, så er dette grupper som 
-                    kan opprettes ved behov. Connect tilbyr faktisk en egen tjeneste som lar deg gjøre akkurat dette: <a href="https://groups.feideconnect.no" target="_blank">groups.feideconnect.no</a>, 
+                    Det jeg tenkte vi kunne gjøre <em>her og nå</em> er å se litt mer på Dataporten sine <code>ad-hoc</code> grupper. Som navnet hinter til, så er dette grupper som 
+                    kan opprettes ved behov. Dataporten tilbyr faktisk en egen tjeneste som lar deg gjøre akkurat dette: <a href="https://groups.dataporten.no" target="_blank">groups.dataporten.no</a>, 
                     a.k.a. <code>Mine Grupper</code>. 
                   </p>
                   
@@ -324,8 +324,8 @@
                   </p>
                   
                   <p>
-                    La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Connect VIP</strong></code> 
-                    - <em>En ad-hoc gruppe for alle Connect-entusiaster</em>.       
+                    La oss se om vi ikke kan legge deg til ei ny gruppe som jeg har opprettet i Mine Grupper for anledningen. Gruppa heter <code><strong>Dataporten VIP</strong></code> 
+                    - <em>En ad-hoc gruppe for alle Dataporten-entusiaster</em>.       
                   </p>
                   
                   <p>
@@ -333,8 +333,8 @@
                   </p>
                   
                   <p>
-                    <a href="https://groups.feideconnect.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
-                      Gå til invitasjonen for gruppe <code>Connect VIP</code>.
+                    <a href="https://groups.dataporten.no/#!/invitation/eb965211-ebdf-41cd-a621-fe355f7e852b/9202328d-c6fb-44d9-8872-574782f68879" target="_blank">
+                      Gå til invitasjonen for gruppe <code>Dataporten VIP</code>.
                     </a>
                   </p>
                                     
@@ -359,7 +359,7 @@
                 <!-- Footer -->
                 <div class="box-footer text-muted">
                   <p>
-                    Mer om grupper på <a href="http://feideconnect.no/docs/groups/" target="_blank">feideconnect.no</a>
+                    Mer om grupper på <a href="http://dataporten.no/docs/groups/" target="_blank">dataporten.no</a>
                   </p>
                 </div>
                 
@@ -385,24 +385,24 @@
                     
                   <p><strong>Klienter</strong></p>  
                   <p>
-                    I jomfruturen din erfarte du hvordan vi snakket med <code>Connect</code> for identifisering og uthenting av informasjon. 
+                    I jomfruturen din erfarte du hvordan vi snakket med <code>Dataporten</code> for identifisering og uthenting av informasjon. 
                     La oss nå se kjapt på hvordan dette går for seg i bakgrunnen:
                   </p>
                   <!-- Vis DIV med ID #modal-connect-dashboard -->
                   
-                  <p><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-connect-dashboard"><i class="ion ion-heart"></i> Hvordan <strong>Connect</strong> vet hvem jeg (klient) er</button></p>
+                  <p><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-connect-dashboard"><i class="ion ion-heart"></i> Hvordan <strong>Dataporten</strong> vet hvem jeg (klient) er</button></p>
                   <!-- osv... -->
                   <p><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-client-structure"><i class="ion ion-social-github"></i> Hvordan jeg er skrudd sammen</button></p>
                   
                   <p><strong>API Gatekeepere (API GK)</strong></p>
                   
                   <p>
-                    Frem til nå har vi snakket mest om autentiserings-aspektet ved <code>Connect</code> og noen kjerne-endepunkter som hun tilbyr, men dette er ikke alt.
+                    Frem til nå har vi snakket mest om autentiserings-aspektet ved <code>Dataporten</code> og noen kjerne-endepunkter som hun tilbyr, men dette er ikke alt.
                   </p>
                   
                   <p>
-                    En super-viktig og super-nyttig funksjonalitet du får med <code>Connect</code> er muligheten til å bruke/dele informasjon via hennes <code>API Gatekeeper</code>. 
-                    Her er det så mye kult jeg gjerne vil snakke om for å virkelig få deg til å se mulighetene, men min funksjon er å tilby en "liten UNINETT Connect demonstrasjon" 
+                    En super-viktig og super-nyttig funksjonalitet du får med <code>Dataporten</code> er muligheten til å bruke/dele informasjon via hennes <code>API Gatekeeper</code>. 
+                    Her er det så mye kult jeg gjerne vil snakke om for å virkelig få deg til å se mulighetene, men min funksjon er å tilby en "liten UNINETT Dataporten demonstrasjon" 
                     så jeg skal forsøke å fatte meg i korthet.
                   </p>
                   
@@ -411,9 +411,9 @@
                     
                     <ol>
                       <li>Den gjør det lett for deg å <em>dele</em> datakilder (med andre eller bare dine egne klienter) på en sikker måte (heter ikke <em>gatekeeper</em> for ingenting)</li>
-                      <li>Den gir deg mulighet til å "tappe" inn i og sy sammen data fra Connect samt mange ulike APIer (dine egne og andres) - en "fleretasjers databuss" om du vil</li>
+                      <li>Den gir deg mulighet til å "tappe" inn i og sy sammen data fra Dataporten samt mange ulike APIer (dine egne og andres) - en "fleretasjers databuss" om du vil</li>
                       <li>API GK muliggjør tilgangsstyring på flere nivåer: hvilke klienter, hvilke scopes, brukere...</li>
-                      <li>Mindre admin: Connect Dashboard er selvbetjent, og tjenestetilbydere kan abonnere på dine APIer uten at du trenger å gjøre noe. Dashboard gir deg også innsikt i hvem som bruker dine data.</li>
+                      <li>Mindre admin: Dataporten Dashboard er selvbetjent, og tjenestetilbydere kan abonnere på dine APIer uten at du trenger å gjøre noe. Dashboard gir deg også innsikt i hvem som bruker dine data.</li>
                       <li>Selv om ditt endepunkt flyttes forblir API GK URL konstant (trenger bare oppdatere i Dashboard)</li>
                     </ol>
                   </p>
@@ -426,22 +426,22 @@
                   <p>Sjekk ut dokumentasjon og enkel kode for vitse-API på <a href="" class="api-github-source" target="_blank">GitHub</a> (motivator: du finner ALLE de gode vitsene i kildefila!!).</p>
                   
                     
-                  <p><strong>Din egen Connect Dashboard</strong></p>
+                  <p><strong>Din egen Dataporten Dashboard</strong></p>
                   <p>
-                    Litt sånn apropos til slutt. Du har nå lært litt om <code>Connect</code>, registrering og autentisering av klienter, dataflyt og litt om APIer. 
+                    Litt sånn apropos til slutt. Du har nå lært litt om <code>Dataporten</code>, registrering og autentisering av klienter, dataflyt og litt om APIer. 
                     Jeg håper du har vært innom hennes <code>Dashboard</code> og tatt en titt der også. Selv om det kanskje ser veldig tomt ut der inne for deg 
-                    akkurat nå, ikke glem at Connect også er et veldig nytting tjeneste/API-register for deg og dine prosjekter - stort og smått.  
+                    akkurat nå, ikke glem at Dataporten også er et veldig nytting tjeneste/API-register for deg og dine prosjekter - stort og smått.  
                   </p>
                   
                   <p>
-                    Det jeg egentlig mener er alle de 5 punktene jeg listet like ovenfor. Når du først har kommet i gang med din første Connect klient eller API er 
+                    Det jeg egentlig mener er alle de 5 punktene jeg listet like ovenfor. Når du først har kommet i gang med din første Dataporten klient eller API er 
                     det veldig fort gjort å bruke det du har lært for å lage enda en og enda en... I løpet av kort tid vil ditt <code>Dashboard</code> begynne å ligne
-                    <button class="btn bg-orange btn-xs" onclick="UTILS.image('Connect Dashboard', 'images/connect_dashboard_simons.png');"><i class="ion ion-image"></i> på dette</button>, 
-                    og da vil du fort sette pris på alle fordelene <code>Connect Dashboard</code> gir deg.
+                    <button class="btn bg-orange btn-xs" onclick="UTILS.image('Dataporten Dashboard', 'images/connect_dashboard_simons.png');"><i class="ion ion-image"></i> på dette</button>, 
+                    og da vil du fort sette pris på alle fordelene <code>Dataporten Dashboard</code> gir deg.
                   </p>
                   
                   <p>
-                    <code>Connect</code> er din tallerken, klienten ditt bestikk og alle APIene du plukker ut fra <code>Dashboard</code> sin matbod er ingrediensene for et supert måltid. 
+                    <code>Dataporten</code> er din tallerken, klienten ditt bestikk og alle APIene du plukker ut fra <code>Dashboard</code> sin matbod er ingrediensene for et supert måltid. 
                   </p>
                   
                   <p>
@@ -470,22 +470,22 @@
                     <p>&nbsp;</p>
                     <h4>Dokumentasjon og Tjenester</h4>
                     <p>
-                      På <a href="http://feideconnect.no/docs/gettingstarted/" target="_blank">feideconnect.no</a> finner du oppdatert dokumentasjon rundt alle 
-                      aspekter av Connect.
+                      På <a href="http://dataporten.no/docs/gettingstarted/" target="_blank">dataporten.no</a> finner du oppdatert dokumentasjon rundt alle 
+                      aspekter av Dataporten.
                     </p>            
                     
                     <p>
-                      I <a href="https://dashboard.feideconnect.no/" target="_blank"><i class="ion ion-ios-pulse-strong"></i> Connect Dashboard</a> 
+                      I <a href="https://dashboard.dataporten.no/" target="_blank"><i class="ion ion-ios-pulse-strong"></i> Dataporten Dashboard</a> 
                       oppretter og administrerer du klienter og APIer
                     </p>
                     
                     <p>
-                      <a href="https://min.feideconnect.no/" target="_blank">Min Connect</a> er en sluttbrukertjeneste der du kan se informasjon om deg selv  
+                      <a href="https://min.dataporten.no/" target="_blank">Min Dataporten</a> er en sluttbrukertjeneste der du kan se informasjon om deg selv  
                       og se/styre hvilke klienter som har godkjenning til å bruke dine data.
                     </p>
                     
                     <p>
-                      <a href="https://groups.feideconnect.no/" target="_blank">Mine Grupper</a> er en sluttbrukertjeneste som gir deg oversikt over dine 
+                      <a href="https://groups.dataporten.no/" target="_blank">Mine Grupper</a> er en sluttbrukertjeneste som gir deg oversikt over dine 
                       gruppetilhørigheter samt administrasjon av disse. Du kan også opprette nye grupper her inne.  
                     </p>
                   </div>
@@ -499,17 +499,17 @@
           
           
   
-          <!------------------------------------------------ MODUL: HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+          <!------------------------------------------------ MODUL: HVORDAN Dataporten VET HVEM JEG ER ------------------------------------------------>
           <div id="modal-connect-dashboard" class="modal">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header bg-light-blue">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><i class="ion ion-heart"></i> Hvordan <code>Connect</code> vet hvem jeg (klient) er</h4>
+                  <h4 class="modal-title"><i class="ion ion-heart"></i> Hvordan <code>Dataporten</code> vet hvem jeg (klient) er</h4>
                 </div>
                 <div class="modal-body">
                   <p>
-                    Tidligere fikk du vite at jeg fortalte <code>Connect</code> følgende om meg da jeg sendte deg til henne for autentisering:
+                    Tidligere fikk du vite at jeg fortalte <code>Dataporten</code> følgende om meg da jeg sendte deg til henne for autentisering:
                   </p>
                   
                   <pre><code class="language-javascript fc-client-info"><!-- --></code></pre>
@@ -519,7 +519,7 @@
                   </p>
                   
                   <p>
-                    <code>Connect</code> har sin egen <strong>selvbetjente</strong> <code>Dashboard</code>, der du som utvikler/tjenesteleverandør 
+                    <code>Dataporten</code> har sin egen <strong>selvbetjente</strong> <code>Dashboard</code>, der du som utvikler/tjenesteleverandør 
                     kan registrere klienter som meg, samt datakilder (eller APIer) som vi skal se på litt senere.
                   </p>
                   
@@ -548,17 +548,17 @@
                   
                   <p class="alert bg-light-blue">
                       <strong>Husk!</strong> Dersom du flytter klienten til en ny URL så MÅ du huske å oppdatere <code>redirect_uri</code> både i 
-                      Connect <code>Dashboard</code> og i koden din!  
+                      Dataporten <code>Dashboard</code> og i koden din!  
                   </p>
                   
                   <p>
-                    Okei! Nå vet vi hvor/hvordan jeg er registrert med <code>Connect</code>. Stikk for all del innom 
-                    <a href="https://dashboard.feideconnect.no/" target="_blank">https://dashboard.feideconnect.no/</a> og 
+                    Okei! Nå vet vi hvor/hvordan jeg er registrert med <code>Dataporten</code>. Stikk for all del innom 
+                    <a href="https://dashboard.dataporten.no/" target="_blank">https://dashboard.dataporten.no/</a> og 
                     ta en titt selv.
                   </p>
                   
                   <p>
-                    I neste avsnitt ser vi på hvordan jeg er skrudd sammen slik at jeg faktisk kan sende deg til <code>Connect</code> 
+                    I neste avsnitt ser vi på hvordan jeg er skrudd sammen slik at jeg faktisk kan sende deg til <code>Dataporten</code> 
                     for autentisering og snakke videre med henne i etterkant.
                   </p>
                 </div>
@@ -568,7 +568,7 @@
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
-          <!------------------------------------------------ ./HVORDAN CONNECT VET HVEM JEG ER ------------------------------------------------>
+          <!------------------------------------------------ ./HVORDAN Dataporten VET HVEM JEG ER ------------------------------------------------>
 
 
           <!------------------------------------------------ MODUL: HVORDAN JEG ER SKRUDD SAMMEN MODAL ------------------------------------------------>   
@@ -583,7 +583,7 @@
                   <p>
                     Jeg nevnte innledningsvis at jeg er skrevet i kun <code>HTML</code> og <code>JavaScript</code>. 
                     Mens tradisjonell Feide-pålogging krever et relativt komplekst oppsett på serverside med en SAML 2.0 programvarepakke 
-                    (f.eks. SimpleSAMLphp), kan du altså med <code>Connect</code> autentisere brukere med bare <code>JavaScript</code> 
+                    (f.eks. SimpleSAMLphp), kan du altså med <code>Dataporten</code> autentisere brukere med bare <code>JavaScript</code> 
                     om du vil. Åja, og så slipper du selvfølgelig styret med idp-test, XML metadata, varsling til Feide om hvilke vertsorganisasjoner som 
                     skal kunne bruke tjenesten og at vertsorganisasjonene må aktivt åpne opp for at deres brukere kan ta i bruk tjenesten, osv... 
                   </p>
@@ -599,11 +599,11 @@
 &lt;script type="text/javascript" src="js/auth/jso.js"></script>
 // Konfigurer JSO 
 var min_jso_instans = new JSO({
-client_id : 'id fra Connect Dashboard',
+client_id : 'id fra Dataporten Dashboard',
 redirect_uri : 'URL til der jeg bor (gjerne 127.0.0.1 mens du utvikler)',
-authorization	: 'https://auth.feideconnect.no/oauth/authorization'
+authorization	: 'https://auth.dataporten.no/oauth/authorization'
 });
-// callback() sender deg til Connect og fanger hennes respons ved retur. callback() bør kalles så tidlig som mulig, før applikasjonen lastes. 
+// callback() sender deg til Dataporten og fanger hennes respons ved retur. callback() bør kalles så tidlig som mulig, før applikasjonen lastes. 
 min_jso_instans.callback();
 </code></pre>  
 
@@ -616,14 +616,14 @@ min_jso_instans.callback();
 JSO.enablejQuery($);
 // Gjør et kall med din JSO instans - 'min_jso_instans'
 min_jso_instans.ajax({
-url: 'https://auth.feideconnect.no/userinfo',
+url: 'https://auth.dataporten.no/userinfo',
 dataType: 'json'
 }).done(function(userObj){
 // Voila!
 });
 // Utlogging gjør jeg på denne måten:
 min_jso_instans.wipeTokens();				
-window.location.replace("https://auth.feideconnect.no/logout"); 
+window.location.replace("https://auth.dataporten.no/logout"); 
 </code></pre> 
 
                   <p>
@@ -632,11 +632,11 @@ window.location.replace("https://auth.feideconnect.no/logout");
                   </p>               
                   
                   <p>
-                    En liten ting til: klienter <em>må</em> ikke bruke JSO (eller JavaScript) for å autentisere seg med Connect altså. Standarden 
+                    En liten ting til: klienter <em>må</em> ikke bruke JSO (eller JavaScript) for å autentisere seg med Dataporten altså. Standarden 
                     heter OAuth 2.0, og du kan bruke nesten hva som helst for å snakke med den. 
-                    Her er <a href="http://feideconnect.no/docs/oauth-libraries/" target="_blank">en haug med biblioteker</a> i mange 
+                    Her er <a href="http://dataporten.no/docs/oauth-libraries/" target="_blank">en haug med biblioteker</a> i mange 
                     ulike språk (Python, PhP, Ruby, .net, Java +++++) som du kan se på, eller du kan skrive din egen. Det er også lett å modifisere 
-                    moduler som er ferdigskrevet for autentisering med Google/Facebook/Twitter/etc til å virke med Connect.
+                    moduler som er ferdigskrevet for autentisering med Google/Facebook/Twitter/etc til å virke med Dataporten.
                   </p>
                   
                   <p>
@@ -671,7 +671,7 @@ window.location.replace("https://auth.feideconnect.no/logout");
                   </p>
                   
                   <p>
-                    I Connect Dashboard ligger et API med ID <code>simons-vitser</code> ("Det beste fra Simon's vitsekolleksjon!") tilgjengelig. 
+                    I Dataporten Dashboard ligger et API med ID <code>simons-vitser</code> ("Det beste fra Simon's vitsekolleksjon!") tilgjengelig. 
                     Jeg er konfigurert til å ha lov til å snakke med dette APIet. Se her: 
                   </p>
                   <p class="text-center">
@@ -738,17 +738,17 @@ window.location.replace("https://auth.feideconnect.no/logout");
                   
                   <p>
                     APIet er et enkelt PHP-script som ligger på en webtjener og alt det gjør er å ta imot en henvendelse og sende et tilfeldig svar (en vits) tilbake. 
-                    Scriptet forventer at henvendelser kommer fra en Connect-klient via Connect GK på følgende URL: <br>
-                    <code>https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/</code>  
+                    Scriptet forventer at henvendelser kommer fra en Dataporten-klient via Dataporten GK på følgende URL: <br>
+                    <code>https://simons-vitser.gk.dataporten.no/api/connect/simons-vitser/</code>  
                   </p>
                   
                   <p>
-                    APIet ligger egentlig på et helt annet domene, men med Connect rutes altså alle kall via gatekeeper på URLen over. 
-                    Å registrere et API i Connect Dashboard er like enkelt som å registrere en klient; tilfør en <code>identifikator</code>, et navn og en URL og vips! 
+                    APIet ligger egentlig på et helt annet domene, men med Dataporten rutes altså alle kall via gatekeeper på URLen over. 
+                    Å registrere et API i Dataporten Dashboard er like enkelt som å registrere en klient; tilfør en <code>identifikator</code>, et navn og en URL og vips! 
                   </p>
                   
                   <p class="alert alert-warning">
-                    <strong>SSL: Connect GK vil bare snakke med ditt API dersom tjeneren din benytter https med et godkjent sertifikat ('self-signed' er ikke ok).</strong>
+                    <strong>SSL: Dataporten GK vil bare snakke med ditt API dersom tjeneren din benytter https med et godkjent sertifikat ('self-signed' er ikke ok).</strong>
                     
                   </p>
                   
@@ -756,7 +756,7 @@ window.location.replace("https://auth.feideconnect.no/logout");
                     La oss si at vitse-APIet egentlig lå her:  <code>https://api.eksempel.no/api/connect/simons-vitser/index.php</code>. 
                   </p>
                   <p>  
-                    I Connect Dashboard oppgir vi da: 
+                    I Dataporten Dashboard oppgir vi da: 
                     
                     <ul>
                       <li><code>endpoint</code> : <mark>https://api.eksempel.no</mark></li>
@@ -764,30 +764,30 @@ window.location.replace("https://auth.feideconnect.no/logout");
                     </ul> 
                   </p>
                   <p>
-                    URLen som Connect-klienter må bruke for å snakke med APIet ditt blir da: <br> 
-                    <code>https://simons-vitser.gk.feideconnect.no/api/connect/simons-vitser/</code>  
+                    URLen som Dataporten-klienter må bruke for å snakke med APIet ditt blir da: <br> 
+                    <code>https://simons-vitser.gk.dataporten.no/api/connect/simons-vitser/</code>  
                   </p>
                   
-                  <strong>Headere fra Connect GK</strong>
+                  <strong>Headere fra Dataporten GK</strong>
                   
                   <p>
-                    For å sikre oss om at klienten som kaller APIet faktisk er en autentisert Connect-klient, sender Connect GK med flere nyttige headere. 
-                    I PHP kan vi titte på f.eks. $_SERVER arrayen for å finne ut mer. Dersom klientkallet kom via Connect GK kan du forvente at disse feltene 
+                    For å sikre oss om at klienten som kaller APIet faktisk er en autentisert Dataporten-klient, sender Dataporten GK med flere nyttige headere. 
+                    I PHP kan vi titte på f.eks. $_SERVER arrayen for å finne ut mer. Dersom klientkallet kom via Dataporten GK kan du forvente at disse feltene 
                     medfølger:
                   </p>
                   
 <pre><code class="language-javascript">
-// Min ID som Connect ga meg ved registrering
-"HTTP_X_FEIDECONNECT_CLIENTID": "f299e692-473a-4ac1-91c3-7e7872d1548d",
+// Min ID som Dataporten ga meg ved registrering
+"HTTP_X_dataporten_CLIENTID": "f299e692-473a-4ac1-91c3-7e7872d1548d",
 // Scopes jeg har tilgang til
-"HTTP_X_FEIDECONNECT_SCOPES": "9,15",
+"HTTP_X_dataporten_SCOPES": "9,15",
 // Bruker-ID til han som besøkte meg
-"HTTP_X_FEIDECONNECT_USERID": "835c8888-08a9-4332-9a18-074944355ad8",
+"HTTP_X_dataporten_USERID": "835c8888-08a9-4332-9a18-074944355ad8",
 // Feide ID for samme bruker
-"HTTP_X_FEIDECONNECT_USERID_SEC": "feide:simon@uninett.no", 
+"HTTP_X_dataporten_USERID_SEC": "feide:simon@uninett.no", 
 
 // API GK bruker/pass ("Trust"-meny i Dashboard for ditt API.)
-"PHP_AUTH_USER": "feideconnect",
+"PHP_AUTH_USER": "dataporten",
 "PHP_AUTH_PW": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 </code></pre>
                   
@@ -801,7 +801,7 @@ window.location.replace("https://auth.feideconnect.no/logout");
                   </p>
                   
                   <p>
-                    Hvilke muligheter! Tenk deg at din klient, som heter noe sånt som <mark>'Skal det Vær en Vits?'</mark>, gjennom Connect fikk tilgang til et FS-API (for studentdata), et værmeldings-API og vårt vitse-API. 
+                    Hvilke muligheter! Tenk deg at din klient, som heter noe sånt som <mark>'Skal det Vær en Vits?'</mark>, gjennom Dataporten fikk tilgang til et FS-API (for studentdata), et værmeldings-API og vårt vitse-API. 
                     Da kunne du f.eks. filtrert ut alle som studerer programmering og gitt disse brukerne bare finvær og de beste vitsene (om binære tall og sånn). 
                   </p>
                   
@@ -908,7 +908,7 @@ window.location.replace("https://auth.feideconnect.no/logout");
     <!-- Styling av kode i UI -->
     <script type="text/javascript" src="js/ui/prism.js"></script>
     <!-- JS for å snakke med Connect og APIer -->
-    <script type="text/javascript" src="js/connect.js"></script>
+    <script type="text/javascript" src="js/dataporten.js"></script>
     <script type="text/javascript" src="js/jokes.js"></script>
     <!-- JS for klienten -->
     <script type="text/javascript" src="js/app.js"></script>

@@ -1,9 +1,9 @@
 /**
  * Konfigurer JSO modul for bruk med denne klienten og start autentiseringsflyt. 
  *
- * Med referanser til DASHBOARD menes https://dashboard.feideconnect.no.
+ * Med referanser til DASHBOARD menes https://dashboard.dataporten.no.
  * 
- * 1. Gi denne fila navnet connect_auth.js (fjern '-SAMPLE')
+ * 1. Gi denne fila navnet dataporten_auth.js (fjern '-SAMPLE')
  * 2. Registrer en ny klient i DASHBOARD
  * 3. Fyll inn linjene 19-21 med info fra DASHBOARD
  * 
@@ -16,22 +16,22 @@
 	 var CONFIG = 
 	 {
 		 fc_auth : {
-			providerID		: 	"FC-connect-simple-demo",	// Valgfritt
+			providerID		: 	"FC-dataporten-simple-demo",	// Valgfritt
 			client_id		:	"MÅ FYLLES INN",	// Klient-spesifikk, satt i DASHBOARD
 			redirect_uri	: 	"MÅ FYLLES INN",	// Klient-spesifikk, settes i DASHBOARD
-			authorization	: 	"https://auth.feideconnect.no/oauth/authorization"		// Alltid samme
+			authorization	: 	"https://auth.dataporten.no/oauth/authorization"		// Alltid samme
 		 },
 		 fc_endpoints :	{
 			// For tilgang må klienten ha bedt om dette scopet i Dashboard
-			groups: 	"https://groups-api.feideconnect.no/groups/",		
+			groups: 	"https://groups-api.dataporten.no/groups/",		
 			// Base-URL for bildefil 		
-			photo: 		"https://auth.feideconnect.no/user/media/",					
+			photo: 		"https://auth.dataporten.no/user/media/",					
 			// BrukerID, navn og profilbilde. For mer info (eks. epost, Feide-ting) må scopes etterspørres i Dashboard.
-			userinfo: 	"https://auth.feideconnect.no/userinfo"
+			userinfo: 	"https://auth.dataporten.no/userinfo"
 		 }, 
 		 api_endpoints : {
-			// Andre 3.parts-APIer klienten har tilgang til via Connect (DASHBOARD) 
-			simons_vitser : 'https://simons-vitser.gk.feideconnect.no/api/connect-simons-vitser/'
+			// Andre 3.parts-APIer klienten har tilgang til via Dataporten (DASHBOARD) 
+			simons_vitser : 'https://simons-vitser.gk.dataporten.no/api/connect-simons-vitser/'
 		 }, 
 		 links : {
 			 client_source	: 'https://github.com/skrodal/connect-simple-demo',
@@ -65,7 +65,7 @@
 		// Dreper sesjonen, inkludert Feide-sesj.
 		logout: function(){
 			jso.wipeTokens();				
-			window.location.replace("https://auth.feideconnect.no/logout");
+			window.location.replace("https://auth.dataporten.no/logout");
 		}, 
 		// Slett sesjon - krever ny runde med godkjenning (men slipper Feide-auth på nytt)
 		wipeTokens: function(){

@@ -1,13 +1,13 @@
 /**
- * Alle kall til Connect "CORE" endepunkter (userinfo og groups) er definert her.
+ * Alle kall til Dataporten "CORE" endepunkter (userinfo og groups) er definert her.
  * 
- * Autentisering ble gjort av /js/auth/connect.js og vi kan bruke variabel 
- * CONNECT derfra til å gjøre kall mot Connect endepunkter og APIer. Siden 
+ * Autentisering ble gjort av /js/auth/dataporten.js og vi kan bruke variabel 
+ * CONNECT derfra til å gjøre kall mot Dataporten endepunkter og APIer. Siden 
  * funksjonene i dette eksempelet gir et asynkront (ajax) svar (XHR) er 
  * kanskje beste måte å fange svarene på slik (med JQuery): 
  * 
  * $.when(CONNECT.userinfo()).done(function(userObj){
- * 		// userObj er data returnert fra Connect
+ * 		// userObj er data returnert fra Dataporten
  * });
  *
  * @author Simon Skrødal
@@ -34,8 +34,8 @@ var CONNECT = (function () {
 			return data.user;	// I denne demoen bryr vi oss bare om 'user'-objektet, så vi piper det i XHR-svaret tilbake.
 		}).fail(function (jqXHR, textStatus, error) {
 			UTILS.alert(
-				"Connect /userinfo", 
-				"<p>En feil oppstod i samtale med Connect's endepunkt <code>/userinfo</code>.</p>" + 
+				"Dataporten /userinfo", 
+				"<p>En feil oppstod i samtale med Dataporten's endepunkt <code>/userinfo</code>.</p>" + 
 				"<p>Kanskje en reload i nettleseren løser problemet?</p>"
 			);
 		});
@@ -53,9 +53,9 @@ var CONNECT = (function () {
 			return data;
 		}).fail(function (jqXHR, textStatus, error) {
 			UTILS.alert(
-				"Connect /groups/me/groups", 
-				"<p>En feil oppstod i samtale med Connect's endepunkt <code>/groups/me/groups</code>.</p>" + 
-				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Connect Dashboard?)</p>"
+				"Dataporten /groups/me/groups", 
+				"<p>En feil oppstod i samtale med Dataporten's endepunkt <code>/groups/me/groups</code>.</p>" + 
+				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Dataporten Dashboard?)</p>"
 				);
 		});	
 	}
@@ -68,9 +68,9 @@ var CONNECT = (function () {
 			return data;
 		}).fail(function (jqXHR, textStatus, error) {
 			UTILS.alert(
-				"Connect /groups/" + query, 
-				"<p>En feil oppstod i samtale med Connect's endepunkt <code>/groups/"+query+"</code>.</p>" + 
-				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Connect Dashboard?)</p>"
+				"Dataporten /groups/" + query, 
+				"<p>En feil oppstod i samtale med Dataporten's endepunkt <code>/groups/"+query+"</code>.</p>" + 
+				"<p class='text-muted'>(Har klienten bedt om tilgang til scope <code>groups</code> i Dataporten Dashboard?)</p>"
 				);
 		});	
 	}
@@ -91,7 +91,7 @@ var CONNECT = (function () {
 		groups: function(){
 			return getUserGroupsXHR();
 		}, 
-		// Se http://feideconnect.no/docs/groups/ for alle ruter 
+		// Se http://dataporten.no/docs/groups/ for alle ruter 
 		groupQuery: function(query) {
 			return getGroupQuery(query);
 		}
