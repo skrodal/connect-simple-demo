@@ -14,3 +14,7 @@ For å sette opp denne klienten på egen webtjener, gjerne localhost, gjør som 
 * Med referanser til DASHBOARD menes https://dashboard.dataporten.no.
 
 ![Preview](/images/UNINETT_Connect_Demo.png)
+
+## Annet ##
+
+Utviklet av Simon Skrødal for UNINETT
